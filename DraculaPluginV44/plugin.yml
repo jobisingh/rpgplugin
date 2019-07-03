@@ -1,0 +1,28 @@
+main: com.vampire.rpg.Pluginc
+version: 0.4
+name: Dracula_RPG
+depend: [ProtocolLib]
+
+commands:
+
+ addmoney:
+   description: testing, not for you
+ craft:
+   description: opens crafting inventory
+   aliases: [p]
+ partychat:
+   description: talk in party chat
+   aliases: [pchat]
+ gene:
+   description: generate a rpg item
+   aliases: [v]
+ invsee:
+   description: view player's inventory
+ rlworlds:
+   description: killing all non-rpg mobs
+ mailbox:
+   description: Opens mailbox menu
+ rlores:
+   description: reloads ores
+ resetquest:
+   description: resests the specified quest
