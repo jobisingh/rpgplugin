@@ -30,7 +30,7 @@ import com.vampire.rpg.mobs.spells.MobSpell;
 import com.vampire.rpg.utils.VamScheduler;
 import com.vampire.rpg.utils.VamTicks;
 
-import net.minecraft.server.v1_10_R1.Entity;
+import net.minecraft.server.v1_13_R2.Entity;
 
 public class MobManager extends AbstractManager {
 
@@ -106,7 +106,7 @@ public class MobManager extends AbstractManager {
             String name = scan.nextLine().trim();
             //type
             @SuppressWarnings("unchecked")
-            Class<? extends net.minecraft.server.v1_10_R1.Entity> entityClass = (Class<? extends Entity>) Class.forName("com.vampire.rpg.utils.entities." + scan.nextLine().trim());
+            Class<? extends net.minecraft.server.v1_13_R2.Entity> entityClass = (Class<? extends Entity>) Class.forName("com.vampire.rpg.utils.entities." + scan.nextLine().trim());
             // level
             int level = Integer.parseInt(scan.nextLine().replaceAll("[^0-9]", ""));
             // prefixes
@@ -155,7 +155,7 @@ public class MobManager extends AbstractManager {
                 if (!s.equalsIgnoreCase("none")) {
                     if (s.startsWith("HEAD")) {
                         String[] temp = s.split(":");
-                        ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
+                        ItemStack skull = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (byte) 3);
                         SkullMeta meta = (SkullMeta) skull.getItemMeta();
                         meta.setOwner(temp[1]);
                         skull.setItemMeta(meta);

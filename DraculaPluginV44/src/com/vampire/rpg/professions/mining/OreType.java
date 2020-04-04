@@ -13,7 +13,7 @@ public enum OreType {
 	RUBY("Ruby",Material.REDSTONE_ORE,20,59,80),
 	EMERALD("Emerald",Material.EMERALD_ORE,30,89,112),
 	SAPPHIRE("Sapphire",Material.LAPIS_ORE,40,234,312),
-	DRAKONITE("Drakonite",Material.QUARTZ_ORE,50,782,1000),
+	DRAKONITE("Drakonite",Material.NETHER_QUARTZ_ORE,50,782,1000),
 	;
 	private String name;
 	private Material mat;

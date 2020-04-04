@@ -4,14 +4,14 @@ import java.lang.reflect.Field;
 
 import com.google.common.collect.Sets;
 
-import net.minecraft.server.v1_10_R1.EntityHorse;
-import net.minecraft.server.v1_10_R1.EntityHuman;
-import net.minecraft.server.v1_10_R1.Material;
-import net.minecraft.server.v1_10_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_10_R1.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_10_R1.PathfinderGoalSelector;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.EntityHorse;
+import net.minecraft.server.v1_13_R2.EntityHuman;
+import net.minecraft.server.v1_13_R2.Material;
+import net.minecraft.server.v1_13_R2.PathfinderGoalFloat;
+import net.minecraft.server.v1_13_R2.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_13_R2.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_13_R2.PathfinderGoalSelector;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomHorse extends EntityHorse implements Leashable {
 
@@ -36,10 +36,6 @@ public class CustomHorse extends EntityHorse implements Leashable {
         this.goalSelector.a(5, new PathfinderGoalMobWander(this, 1.0D, 40, leash));
     }
 
-    @Override
-    public boolean a(Material material) {
-        return false;
-    }
 
     @Override
     public void stopRiding() {
@@ -56,7 +52,8 @@ public class CustomHorse extends EntityHorse implements Leashable {
        }
      */
     public void rearUp() {
-        this.dJ();
+    	//Might be DZ instead
+        this.ea();
     }
 
 }

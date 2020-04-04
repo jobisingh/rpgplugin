@@ -2,6 +2,7 @@ package com.vampire.rpg.particles.custom.spells;
 
 import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 
 import de.slikey.effectlib.Effect;
 import de.slikey.effectlib.EffectManager;
@@ -12,7 +13,7 @@ public class FreezeSpellEndEffect extends Effect {
 
     public float radius = 0.7f;
     public int particles = 20;
-    public ParticleEffect particle = ParticleEffect.REDSTONE;
+    public Particle particle = Particle.REDSTONE;
 
     private Location loc;
 

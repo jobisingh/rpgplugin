@@ -13,7 +13,7 @@ public class BannerBuilder {
 	BannerMeta meta;
 	public BannerBuilder(DyeColor dye){
 		this.baseColor=dye;
-		ItemStack i=new ItemStack(Material.BANNER);
+		ItemStack i=new ItemStack(Material.WHITE_BANNER);
 		this.meta=(BannerMeta)i.getItemMeta();
 		this.meta.setBaseColor(dye);
 	}
@@ -30,7 +30,7 @@ public class BannerBuilder {
 		return this.meta;
 	}
 	public ItemStack generateItem(){
-		ItemStack i=new ItemStack(Material.BANNER);
+		ItemStack i=new ItemStack(Material.WHITE_BANNER);
 		this.meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
 		i.setItemMeta(this.meta);
 		return i;

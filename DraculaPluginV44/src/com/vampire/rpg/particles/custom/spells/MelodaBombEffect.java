@@ -2,6 +2,7 @@ package com.vampire.rpg.particles.custom.spells;
 
 import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 
 import com.vampire.rpg.utils.VamMath;
 
@@ -35,7 +36,7 @@ public class MelodaBombEffect extends Effect {
             x -= 1;
             z -= 1;
             loc.add(x, y, z);
-            display(ParticleEffect.REDSTONE, loc, Color.AQUA);
+            display(Particle.REDSTONE, loc, Color.AQUA);
             loc.subtract(x, y, z);
         }
     }

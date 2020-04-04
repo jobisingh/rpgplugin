@@ -1,18 +1,18 @@
 package com.vampire.rpg;
 
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import net.minecraft.server.v1_10_R1.IChatBaseComponent;
-import net.minecraft.server.v1_10_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_10_R1.PacketPlayOutChat;
+import net.minecraft.server.v1_13_R2.IChatBaseComponent;
+import net.minecraft.server.v1_13_R2.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_13_R2.PacketPlayOutChat;
 
 public class ActionBarAPI {
 	
 	public static void sendBar(Player p,String s){
 		 IChatBaseComponent barmsg = ChatSerializer.a("{\"text\":\"" + s + "\"}");
-		 PacketPlayOutChat bar = new PacketPlayOutChat (barmsg,(byte) 2);
+		 PacketPlayOutChat bar = new PacketPlayOutChat (barmsg);
 		 ((CraftPlayer) p).getHandle().playerConnection.sendPacket(bar);
 	}
 	/* public static void sendActionBar(Player p, String msg) {
@@ -23,7 +23,7 @@ public class ActionBarAPI {
 	public static void sendBar(Player p,String s,int duration){
 		// IChatBaseComponent icbc = ChatSerializer.a("{\"text\": \"" + s +"\"}");
 		 IChatBaseComponent barmsg = ChatSerializer.a("{\"text\":\"" + s + "\"}");
-		 PacketPlayOutChat bar = new PacketPlayOutChat (barmsg,(byte) 2);
+		 PacketPlayOutChat bar = new PacketPlayOutChat (barmsg);
 		 ((CraftPlayer) p).getHandle().playerConnection.sendPacket(bar);
 		 if (duration >= 0)
 		    {

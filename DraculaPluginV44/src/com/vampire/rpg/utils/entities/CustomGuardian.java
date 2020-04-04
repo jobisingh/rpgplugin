@@ -1,7 +1,7 @@
 package com.vampire.rpg.utils.entities;
 
-import net.minecraft.server.v1_10_R1.EntityGuardian;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.EntityGuardian;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomGuardian extends EntityGuardian implements Leashable {
 

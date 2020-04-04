@@ -77,7 +77,7 @@ public class ItemAPI {
     	return item;
 	}
 	 public static ItemStack getPlayerSkull(String playerName) {
-	        ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+	        ItemStack head = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short) 3);
 	        SkullMeta headMeta = (SkullMeta) head.getItemMeta();
 	        headMeta.setOwner(playerName);
 	        head.setItemMeta(headMeta);
@@ -164,7 +164,7 @@ public class ItemAPI {
     }
 	public static final String PREFIX = "http://textures.minecraft.net/texture/";
 	public static ItemStack getSkull(String url) {
-        ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
+        ItemStack head = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short)3);
         if(url.isEmpty())return head;
        
        

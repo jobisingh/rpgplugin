@@ -9,18 +9,18 @@ import com.vampire.rpg.utils.VamMath;
 public enum EquipType {
     /* Melee */
     SWORD(new Material[] { // Knights | Melee fighter
-            Material.WOOD_SWORD,
+            Material.WOODEN_SWORD,
             Material.STONE_SWORD,
             Material.IRON_SWORD,
-            Material.GOLD_SWORD,
+            Material.GOLDEN_SWORD,
             Material.DIAMOND_SWORD
     }, "Sword"),
     MACE(new Material[] { // Paladins | Melee tank
-            Material.WOOD_SPADE,
-            Material.STONE_SPADE,
-            Material.IRON_SPADE,
-            Material.GOLD_SPADE,
-            Material.DIAMOND_SPADE
+            Material.WOODEN_SHOVEL,
+            Material.STONE_SHOVEL,
+            Material.IRON_SHOVEL,
+            Material.GOLDEN_SHOVEL,
+            Material.DIAMOND_SHOVEL
     }, "Mace"),
     DAGGER(new Material[] { // Assassins | Melee burst
             Material.SHEARS,
@@ -30,25 +30,25 @@ public enum EquipType {
             Material.SHEARS
     }, "Dagger"),
     BATTLE_AXE(new Material[]{ // Barbarians | Melee fighter
-    		Material.WOOD_AXE,
+    		Material.WOODEN_AXE,
     		Material.STONE_AXE,
     		Material.IRON_AXE,
-    		Material.GOLD_AXE,
+    		Material.GOLDEN_AXE,
     		Material.DIAMOND_AXE
     },"Battle Axe"),
     /* Mid-range */
     ELIXIR(new Material[] { // Alchemists | Mid-range burst
-            Material.DRAGONS_BREATH,
-            Material.DRAGONS_BREATH,
-            Material.DRAGONS_BREATH,
-            Material.DRAGONS_BREATH,
-            Material.DRAGONS_BREATH
+            Material.DRAGON_BREATH,
+            Material.DRAGON_BREATH,
+            Material.DRAGON_BREATH,
+            Material.DRAGON_BREATH,
+            Material.DRAGON_BREATH
     }, "Elixir"),
     SCYTHE(new Material[] { // Reapers | Mid-range fighter
-            Material.WOOD_HOE,
+            Material.WOODEN_HOE,
             Material.STONE_HOE,
             Material.IRON_HOE,
-            Material.GOLD_HOE,
+            Material.GOLDEN_HOE,
             Material.DIAMOND_HOE
     }, "Scythe"),
     /* High-range */
@@ -78,28 +78,28 @@ public enum EquipType {
             Material.LEATHER_HELMET,
             Material.CHAINMAIL_HELMET,
             Material.IRON_HELMET,
-            Material.GOLD_HELMET,
+            Material.GOLDEN_HELMET,
             Material.DIAMOND_HELMET
     }, "Helmet"),
     CHESTPLATE(new Material[] { // Chestplates
             Material.LEATHER_CHESTPLATE,
             Material.CHAINMAIL_CHESTPLATE,
             Material.IRON_CHESTPLATE,
-            Material.GOLD_CHESTPLATE,
+            Material.GOLDEN_CHESTPLATE,
             Material.DIAMOND_CHESTPLATE
     }, "Chestplate"),
     LEGGINGS(new Material[] { // Leggings
             Material.LEATHER_LEGGINGS,
             Material.CHAINMAIL_LEGGINGS,
             Material.IRON_LEGGINGS,
-            Material.GOLD_LEGGINGS,
+            Material.GOLDEN_LEGGINGS,
             Material.DIAMOND_LEGGINGS
     }, "Leggings"),
     BOOTS(new Material[] { // Boots
             Material.LEATHER_BOOTS,
             Material.CHAINMAIL_BOOTS,
             Material.IRON_BOOTS,
-            Material.GOLD_BOOTS,
+            Material.GOLDEN_BOOTS,
             Material.DIAMOND_BOOTS
     }, "Boots")
 

@@ -19,7 +19,7 @@ import com.vampire.rpg.utils.VamParticles;
 import com.vampire.rpg.utils.VamScheduler;
 
 import de.slikey.effectlib.util.ParticleEffect;
-import net.minecraft.server.v1_10_R1.EntityGuardian;
+import net.minecraft.server.v1_13_R2.EntityGuardian;
 public class DivineBeam extends SpellEffect {
 
 	@Override

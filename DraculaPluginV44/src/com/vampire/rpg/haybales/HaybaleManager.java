@@ -123,7 +123,7 @@ public class HaybaleManager extends AbstractManager {
 	            }
 	            lastSearched.put(p.getName(), event.getClickedBlock().getLocation());
 	            lastSearch.put(p.getName(), System.currentTimeMillis());
-	            VamSound.playSound(p, Sound.ENTITY_FIREWORK_TWINKLE_FAR);
+	            VamSound.playSound(p, Sound.ENTITY_FIREWORK_ROCKET_TWINKLE_FAR);
 	            p.sendMessage(ChatColor.GRAY + "> " + ChatColor.GREEN + "You search through the hay bale, hoping for some goodies...");
 	            final Location loc = event.getClickedBlock().getLocation();
 	            VamScheduler.schedule(plugin, new Runnable() {
@@ -133,7 +133,7 @@ public class HaybaleManager extends AbstractManager {
 	                    if (p == null || !p.isValid() || !p.isOnline())
 	                        return;
 	                    if (count < 3) {
-	                        VamSound.playSound(p, Sound.ENTITY_FIREWORK_TWINKLE_FAR);
+	                        VamSound.playSound(p, Sound.ENTITY_FIREWORK_ROCKET_TWINKLE_FAR);
 	                        count++;
 	                        p.sendMessage(ChatColor.GRAY + "> " + ChatColor.GREEN + ".....".substring(0, (int) (Math.random() * 3) + 3));
 	                        VamScheduler.schedule(plugin, this, VamTicks.seconds(1));

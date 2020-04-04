@@ -7,6 +7,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.util.Vector;
 
 import de.slikey.effectlib.Effect;
@@ -21,7 +22,7 @@ public class FairyWingsEffect extends Effect {
     /**
      * Particle to draw the image
      */
-    public ParticleEffect particle = ParticleEffect.REDSTONE;
+    public Particle particle = Particle.REDSTONE;
 
     /**
      * Each stepX pixel will be shown. Saves packets for high resolutions.

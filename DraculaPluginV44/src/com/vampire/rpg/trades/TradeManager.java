@@ -284,7 +284,7 @@ public class TradeManager extends AbstractManager {
             display.add(new Object[] {
                     3,
                     4,
-                    new ItemStack(Material.WOOL, 1, DyeColor.LIME.getWoolData()),
+                    new ItemStack(Material.LIME_WOOL, 1),
                     ChatColor.YELLOW + oName + ": " + ChatColor.GREEN + "Ready to Trade!",
                     new Object[] {
                             ChatColor.YELLOW,
@@ -307,7 +307,7 @@ public class TradeManager extends AbstractManager {
             display.add(new Object[] {
                     3,
                     4,
-                    new ItemStack(Material.WOOL, 1, DyeColor.RED.getWoolData()),
+                    new ItemStack(Material.RED_WOOL, 1),
                     ChatColor.YELLOW + oName + ": " + ChatColor.RED + "Not Ready",
                     new Object[] {
                             ChatColor.YELLOW,
@@ -323,7 +323,7 @@ public class TradeManager extends AbstractManager {
             display.add(new Object[] {
                     5,
                     4,
-                    new ItemStack(Material.WOOL, 1, DyeColor.LIME.getWoolData()),
+                    new ItemStack(Material.LIME_WOOL, 1),
                     ChatColor.YELLOW + "You: " + ChatColor.GREEN + "Ready to Trade!",
                     new Object[] {
                             ChatColor.YELLOW,
@@ -355,7 +355,7 @@ public class TradeManager extends AbstractManager {
             display.add(new Object[] {
                     5,
                     4,
-                    new ItemStack(Material.WOOL, 1, DyeColor.RED.getWoolData()),
+                    new ItemStack(Material.RED_WOOL, 1),
                     ChatColor.YELLOW + "You: " + ChatColor.RED + "Not Ready",
                     new Object[] {
                             ChatColor.YELLOW,
@@ -390,7 +390,7 @@ public class TradeManager extends AbstractManager {
             display.add(new Object[] {
                     row,
                     4,
-                    Material.IRON_FENCE,
+                    Material.IRON_BARS,
                     ChatColor.RESET + "",
                     new Object[] {
                             ChatColor.YELLOW,

@@ -29,7 +29,7 @@ public class Bomb extends SpellEffect {
     public boolean cast(final Player p, final PlayerData pd, int level) {
         Location loc = p.getLocation().add(0, p.getEyeHeight() * 0.8, 0);
         loc.add(p.getLocation().getDirection().normalize().multiply(0.4));
-        final Item item = p.getWorld().dropItem(loc, new ItemStack(Material.FIREBALL));
+        final Item item = p.getWorld().dropItem(loc, new ItemStack(Material.LEGACY_FIREBALL));
         item.setMetadata(VamMetadata.META_NO_PICKUP, new FixedMetadataValue(Spell.plugin, 0));
         //        ItemManager.attachLabel(item, ChatColor.BOLD + "= " + p.getName() + "'s Bomb =");
         Spell.plugin.getInstance(DropManager.class).attachLabel(item, ChatColor.DARK_GRAY.toString() + ChatColor.ITALIC + p.getName());

@@ -1,6 +1,7 @@
 package com.vampire.rpg.particles.custom;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 
 import de.slikey.effectlib.Effect;
 import de.slikey.effectlib.EffectManager;
@@ -8,7 +9,7 @@ import de.slikey.effectlib.EffectType;
 import de.slikey.effectlib.util.ParticleEffect;
 
 public class QuadHelixEffect extends Effect {
-	private static final ParticleEffect particle = ParticleEffect.END_ROD;
+	private static final Particle particle = Particle.END_ROD;
 	public static int strands = 4;
     public static int particles = 120;
     public static float radius = 1.3F;

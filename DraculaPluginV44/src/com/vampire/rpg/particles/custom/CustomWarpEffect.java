@@ -1,6 +1,7 @@
 package com.vampire.rpg.particles.custom;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 
 import de.slikey.effectlib.Effect;
 import de.slikey.effectlib.EffectManager;
@@ -22,7 +23,7 @@ public class CustomWarpEffect extends Effect {
     /**
      * Particle to display
      */
-    public ParticleEffect particle = ParticleEffect.PORTAL;
+    public Particle particle = Particle.PORTAL;
 
     /**
      * Interval of the circles

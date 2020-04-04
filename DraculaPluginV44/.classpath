@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="D:/Downloads-D/EffectLib-5.4.jar"/>
-	<classpathentry kind="lib" path="D:/Desktop/Spgiot Server/spigot.jar"/>
-	<classpathentry kind="lib" path="D:/Downloads-D/PacketWrapper.jar"/>
-	<classpathentry kind="lib" path="D:/Downloads-D/ProtocolLib (1).jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/coolj/Desktop/Coding/Java/Minecraft Plugins/1.13/Testing Server/spigot-1.13.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/coolj/Desktop/Coding/Java/Minecraft Plugins/1.13/Testing Server/plugins/PacketWrapper.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/coolj/Desktop/Coding/Java/Minecraft Plugins/1.13/Testing Server/plugins/ProtocolLib.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/coolj/Desktop/Coding/Java/Minecraft Plugins/1.13/Testing Server/plugins/EffectLib-6.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

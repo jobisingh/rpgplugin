@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.image.BufferedImage;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.util.Vector;
 
 import de.slikey.effectlib.Effect;
@@ -17,7 +18,7 @@ import de.slikey.effectlib.util.VectorUtils;
 
 public class InfernoTagEffect extends Effect {
 
-    public ParticleEffect particle = ParticleEffect.FLAME;
+    public Particle particle = Particle.FLAME;
 
     /**
      * Each stepX pixel will be shown. Saves packets for lower fontsizes.

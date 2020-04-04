@@ -188,7 +188,7 @@ public class ClassManager extends AbstractManager {
                     }
                 }
                 },
-                { 0, 4, Material.GOLD_SPADE, ChatColor.AQUA + "Paladin", new Object[] {
+                { 0, 4, Material.GOLDEN_SHOVEL, ChatColor.AQUA + "Paladin", new Object[] {
                         ChatColor.GRAY,
                         "Mace Users",
                         ChatColor.GREEN,
@@ -354,10 +354,10 @@ public class ClassManager extends AbstractManager {
 
     public static void showClassSpellMenu(final Player p, final PlayerData pd, final boolean villager) {
         Inventory inventory = MenuManager.createMenu(p, (villager ? "Villager" : pd.classType.toString()) + " Spell Book", 6, new Object[][] {
-                {
+                { 
                         0,
                         0,
-                        Material.BOOK_AND_QUILL,
+                        Material.LEGACY_BOOK_AND_QUILL,
                         ChatColor.AQUA + "Spellcast 1 " + ChatColor.YELLOW + "-" + ChatColor.GOLD + " RLL",
                         new Object[] {
                                 ChatColor.GREEN,
@@ -379,7 +379,7 @@ public class ClassManager extends AbstractManager {
                 {
                         0,
                         1,
-                        Material.BOOK_AND_QUILL,
+                        Material.LEGACY_BOOK_AND_QUILL,
                         ChatColor.AQUA + "Spellcast 2 " + ChatColor.YELLOW + "-" + ChatColor.GOLD + " RLR",
                         new Object[] {
                                 ChatColor.GREEN,
@@ -401,7 +401,7 @@ public class ClassManager extends AbstractManager {
                 {
                         0,
                         2,
-                        Material.BOOK_AND_QUILL,
+                        Material.LEGACY_BOOK_AND_QUILL,
                         ChatColor.AQUA + "Spellcast 3 " + ChatColor.YELLOW + "-" + ChatColor.GOLD + " RRL",
                         new Object[] {
                                 ChatColor.GREEN,
@@ -423,7 +423,7 @@ public class ClassManager extends AbstractManager {
                 {
                         0,
                         3,
-                        Material.BOOK_AND_QUILL,
+                        Material.LEGACY_BOOK_AND_QUILL,
                         ChatColor.AQUA + "Spellcast 4 " + ChatColor.YELLOW + "-" + ChatColor.GOLD + " RRR",
                         new Object[] {
                                 ChatColor.GREEN,
@@ -653,7 +653,7 @@ public class ClassManager extends AbstractManager {
         if (pd.usingSpell(s))
             o[2] = Material.SLIME_BALL;
         else
-            o[2] = Material.SNOW_BALL;
+            o[2] = Material.SNOWBALL;
         o[3] = ChatColor.GREEN + s.name + ChatColor.GRAY + " - " + ChatColor.DARK_AQUA + s.manaCost + " Mana";
         ArrayList<Object> info = new ArrayList<Object>();
         info.add(ChatColor.GRAY + ChatColor.ITALIC.toString());
@@ -706,7 +706,7 @@ public class ClassManager extends AbstractManager {
                 o[2] = Material.PAPER;
                 o[3] = ChatColor.GREEN + s.name + ChatColor.GRAY + " - " + ChatColor.DARK_AQUA + "Passive";
             } else {
-                o[2] = Material.EMPTY_MAP;
+                o[2] = Material.LEGACY_EMPTY_MAP;
                 o[3] = ChatColor.DARK_RED + s.name + ChatColor.GRAY + " - " + ChatColor.DARK_AQUA + "Passive";
             }
         } else {
@@ -714,10 +714,10 @@ public class ClassManager extends AbstractManager {
                 if (pd.usingSpell(s))
                     o[2] = Material.SLIME_BALL;
                 else
-                    o[2] = Material.SNOW_BALL;
+                    o[2] = Material.SNOWBALL;
                 o[3] = ChatColor.GREEN + s.name + ChatColor.GRAY + " - " + ChatColor.DARK_AQUA + s.manaCost + " Mana";
             } else {
-                o[2] = Material.FIREWORK_CHARGE;
+                o[2] = Material.LEGACY_FIREWORK_CHARGE;
                 o[3] = ChatColor.DARK_RED + s.name + ChatColor.GRAY + " - " + ChatColor.DARK_AQUA + s.manaCost + " Mana";
             }
         }

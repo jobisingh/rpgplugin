@@ -7,14 +7,14 @@ import org.bukkit.potion.PotionEffectType;
 
 import com.google.common.collect.Sets;
 
-import net.minecraft.server.v1_10_R1.Entity;
-import net.minecraft.server.v1_10_R1.EntityCaveSpider;
-import net.minecraft.server.v1_10_R1.EntityHuman;
-import net.minecraft.server.v1_10_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_10_R1.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_10_R1.PathfinderGoalSelector;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.Entity;
+import net.minecraft.server.v1_13_R2.EntityCaveSpider;
+import net.minecraft.server.v1_13_R2.EntityHuman;
+import net.minecraft.server.v1_13_R2.PathfinderGoalFloat;
+import net.minecraft.server.v1_13_R2.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_13_R2.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_13_R2.PathfinderGoalSelector;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomCaveSpider extends EntityCaveSpider implements Leashable {
 

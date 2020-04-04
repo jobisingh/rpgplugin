@@ -1,6 +1,7 @@
 package com.vampire.rpg.particles.custom;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.util.Vector;
 
 import de.slikey.effectlib.Effect;
@@ -14,7 +15,7 @@ public class WaterSpoutEffect extends Effect {
     /**
      * Particle of the fountain
      */
-    public ParticleEffect particle = ParticleEffect.WATER_SPLASH;
+    public Particle particle = Particle.WATER_SPLASH;
 
     /**
      * Amount of strands (10)

@@ -85,7 +85,7 @@ public class CombatManager extends AbstractManager {
         	return cancel;
        if (!SpellManager.isCasting(p)) {
             // throw potion
-            if (item != null && item.getType() == Material.DRAGONS_BREATH) {
+            if (item != null && item.getType() == Material.DRAGON_BREATH) {
                 cancel = true;
                 p.updateInventory();
                 if (ItemManager.isItemWithLevel(item)) {
@@ -178,13 +178,13 @@ public class CombatManager extends AbstractManager {
         if (item != null && item.getType() == Material.POTION) {
             event.setCancelled(true);
         }
-        if (event.getItem() != null && event.getItem().getType() != null && (event.getItem().getType() == Material.WOOD_HOE || event.getItem().getType() == Material.STONE_HOE || event.getItem().getType() == Material.IRON_HOE || event.getItem().getType() == Material.GOLD_HOE || event.getItem().getType() == Material.DIAMOND_HOE)) {
+        if (event.getItem() != null && event.getItem().getType() != null && (event.getItem().getType() == Material.WOODEN_HOE || event.getItem().getType() == Material.STONE_HOE || event.getItem().getType() == Material.IRON_HOE || event.getItem().getType() == Material.GOLDEN_HOE || event.getItem().getType() == Material.DIAMOND_HOE)) {
             PlayerData pd = plugin.getPD(event.getPlayer());
             if (!(pd != null && event.getPlayer().getGameMode() == GameMode.CREATIVE /*&& EnvironmentManager.canBuild(pd)*/)) {
                 event.setCancelled(true);
             }
         }
-        if (event.getItem() != null && event.getItem().getType() != null && (event.getItem().getType() == Material.WOOD_SPADE || event.getItem().getType() == Material.STONE_SPADE || event.getItem().getType() == Material.IRON_SPADE || event.getItem().getType() == Material.GOLD_SPADE || event.getItem().getType() == Material.DIAMOND_SPADE)) {
+        if (event.getItem() != null && event.getItem().getType() != null && (event.getItem().getType() == Material.WOODEN_SHOVEL || event.getItem().getType() == Material.STONE_SHOVEL || event.getItem().getType() == Material.IRON_SHOVEL || event.getItem().getType() == Material.GOLDEN_SHOVEL || event.getItem().getType() == Material.DIAMOND_SHOVEL)) {
             PlayerData pd = plugin.getPD(event.getPlayer());
             if (!(pd != null && event.getPlayer().getGameMode() == GameMode.CREATIVE  /* && EnvironmentManager.canBuild(pd)*/)) {
                 event.setCancelled(true);

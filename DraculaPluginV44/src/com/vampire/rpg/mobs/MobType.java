@@ -6,8 +6,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftWolf;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftWolf;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Horse;
@@ -36,7 +36,7 @@ import com.vampire.rpg.utils.entities.Leashable;
 public class MobType {
     public String identifier;
     public String name;
-    public Class<? extends net.minecraft.server.v1_10_R1.Entity> entityClass;
+    public Class<? extends net.minecraft.server.v1_13_R2.Entity> entityClass;
     public int level;
     public ArrayList<String> prefixes;
     public ArrayList<String> suffixes;
@@ -222,7 +222,7 @@ public class MobType {
                 item = item.clone();
                 item.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
             }
-            if (s.endsWith("_HELMET") || item.getType() == Material.SKULL_ITEM)
+            if (s.endsWith("_HELMET") || item.getType() == Material.LEGACY_SKULL_ITEM)
                 ee.setHelmet(item);
             else if (s.endsWith("_CHESTPLATE"))
                 ee.setChestplate(item);

@@ -1,8 +1,8 @@
 package com.vampire.rpg.utils;
 
-import net.minecraft.server.v1_10_R1.Entity;
-import net.minecraft.server.v1_10_R1.EntityArmorStand;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.Entity;
+import net.minecraft.server.v1_13_R2.EntityArmorStand;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomArmorStand extends EntityArmorStand {
 
@@ -12,12 +12,12 @@ public class CustomArmorStand extends EntityArmorStand {
 
     @Override
     // was K() in 1.8, now U
-    public void U() {
+    public void W() {
 
     }
     
     @Override
-    protected void cn() {
+    protected void cN() {
         
     }
     

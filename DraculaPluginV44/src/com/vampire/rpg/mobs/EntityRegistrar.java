@@ -3,9 +3,12 @@ package com.vampire.rpg.mobs;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import org.bukkit.entity.EntityType;
 
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.types.Type;
 import com.vampire.rpg.utils.entities.CustomBlaze;
 import com.vampire.rpg.utils.entities.CustomCaveSpider;
 import com.vampire.rpg.utils.entities.CustomChicken;
@@ -29,57 +32,65 @@ import com.vampire.rpg.utils.entities.CustomWitch;
 import com.vampire.rpg.utils.entities.CustomWolf;
 import com.vampire.rpg.utils.entities.CustomZombie;
 
-import net.minecraft.server.v1_10_R1.BiomeBase;
-import net.minecraft.server.v1_10_R1.BiomeBase.BiomeMeta;
-import net.minecraft.server.v1_10_R1.EntityBlaze;
-import net.minecraft.server.v1_10_R1.EntityCaveSpider;
-import net.minecraft.server.v1_10_R1.EntityChicken;
-import net.minecraft.server.v1_10_R1.EntityCow;
-import net.minecraft.server.v1_10_R1.EntityHorse;
-import net.minecraft.server.v1_10_R1.EntityInsentient;
-import net.minecraft.server.v1_10_R1.EntityIronGolem;
-import net.minecraft.server.v1_10_R1.EntityMagmaCube;
-import net.minecraft.server.v1_10_R1.EntityMushroomCow;
-import net.minecraft.server.v1_10_R1.EntityOcelot;
-import net.minecraft.server.v1_10_R1.EntityPig;
-import net.minecraft.server.v1_10_R1.EntityPigZombie;
-import net.minecraft.server.v1_10_R1.EntityPolarBear;
-import net.minecraft.server.v1_10_R1.EntityRabbit;
-import net.minecraft.server.v1_10_R1.EntitySheep;
-import net.minecraft.server.v1_10_R1.EntitySilverfish;
-import net.minecraft.server.v1_10_R1.EntitySkeleton;
-import net.minecraft.server.v1_10_R1.EntitySlime;
-import net.minecraft.server.v1_10_R1.EntitySpider;
-import net.minecraft.server.v1_10_R1.EntityTypes;
-import net.minecraft.server.v1_10_R1.EntityVillager;
-import net.minecraft.server.v1_10_R1.EntityWitch;
-import net.minecraft.server.v1_10_R1.EntityWolf;
-import net.minecraft.server.v1_10_R1.EntityZombie;
+import net.minecraft.server.v1_13_R2.BiomeBase;
+import net.minecraft.server.v1_13_R2.BiomeBase.BiomeMeta;
+import net.minecraft.server.v1_13_R2.DataConverterRegistry;
+import net.minecraft.server.v1_13_R2.DataConverterTypes;
+import net.minecraft.server.v1_13_R2.Entity;
+import net.minecraft.server.v1_13_R2.EntityBlaze;
+import net.minecraft.server.v1_13_R2.EntityCaveSpider;
+import net.minecraft.server.v1_13_R2.EntityChicken;
+import net.minecraft.server.v1_13_R2.EntityCow;
+import net.minecraft.server.v1_13_R2.EntityHorse;
+import net.minecraft.server.v1_13_R2.EntityInsentient;
+import net.minecraft.server.v1_13_R2.EntityIronGolem;
+import net.minecraft.server.v1_13_R2.EntityMagmaCube;
+import net.minecraft.server.v1_13_R2.EntityMushroomCow;
+import net.minecraft.server.v1_13_R2.EntityOcelot;
+import net.minecraft.server.v1_13_R2.EntityPig;
+import net.minecraft.server.v1_13_R2.EntityPigZombie;
+import net.minecraft.server.v1_13_R2.EntityPolarBear;
+import net.minecraft.server.v1_13_R2.EntityRabbit;
+import net.minecraft.server.v1_13_R2.EntitySheep;
+import net.minecraft.server.v1_13_R2.EntitySilverfish;
+import net.minecraft.server.v1_13_R2.EntitySkeleton;
+import net.minecraft.server.v1_13_R2.EntitySlime;
+import net.minecraft.server.v1_13_R2.EntitySpider;
+import net.minecraft.server.v1_13_R2.EntityTypes;
+import net.minecraft.server.v1_13_R2.EntityVillager;
+import net.minecraft.server.v1_13_R2.EntityWitch;
+import net.minecraft.server.v1_13_R2.EntityWolf;
+import net.minecraft.server.v1_13_R2.EntityZombie;
+import net.minecraft.server.v1_13_R2.EnumCreatureType;
+import net.minecraft.server.v1_13_R2.IRegistry;
+import net.minecraft.server.v1_13_R2.MinecraftKey;
+import net.minecraft.server.v1_13_R2.SharedConstants;
+import net.minecraft.server.v1_13_R2.World;
 
 public enum EntityRegistrar {
 
-    Villager("Villager", 120, EntityType.VILLAGER, EntityVillager.class, CustomVillager.class),
-    Skeleton("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, CustomSkeleton.class),
-    Zombie("Zombie", 54, EntityType.ZOMBIE, EntityZombie.class, CustomZombie.class),
-    Slime("Slime", 55, EntityType.SLIME, EntitySlime.class, CustomSlime.class),
-    Chicken("Chicken", 93, EntityType.CHICKEN, EntityChicken.class, CustomChicken.class),
-    Cow("Cow", 92, EntityType.COW, EntityCow.class, CustomCow.class),
-    Spider("Spider", 52, EntityType.SPIDER, EntitySpider.class, CustomSpider.class),
-    Blaze("Blaze", 61, EntityType.BLAZE, EntityBlaze.class, CustomBlaze.class),
-    Iron_Golem("VillagerGolem", 99, EntityType.IRON_GOLEM, EntityIronGolem.class, CustomIronGolem.class),
-    Wolf("Wolf", 95, EntityType.WOLF, EntityWolf.class, CustomWolf.class),
-    Silverfish("Silverfish", 60, EntityType.SILVERFISH, EntitySilverfish.class, CustomSilverfish.class),
-    Pig_Zombie("PigZombie", 57, EntityType.PIG_ZOMBIE, EntityPigZombie.class, CustomPigZombie.class),
-    Magma_Cube("LavaSlime", 62, EntityType.MAGMA_CUBE, EntityMagmaCube.class, CustomMagmaCube.class),
-    Cave_Spider("CaveSpider", 59, EntityType.CAVE_SPIDER, EntityCaveSpider.class, CustomCaveSpider.class),
-    Pig("Pig", 90, EntityType.PIG, EntityPig.class, CustomPig.class),
-    Sheep("Sheep", 91, EntityType.SHEEP, EntitySheep.class, CustomSheep.class),
-    MushroomCow("MushroomCow", 96, EntityType.MUSHROOM_COW, EntityMushroomCow.class, CustomMushroomCow.class),
-    Rabbit("Rabbit", 101, EntityType.RABBIT, EntityRabbit.class, CustomRabbit.class),
-    Witch("Witch", 66, EntityType.WITCH, EntityWitch.class, CustomWitch.class),
-    Horse("EntityHorse", 100, EntityType.HORSE, EntityHorse.class, CustomHorse.class),
-    PolarBear("PolarBear", 102, EntityType.POLAR_BEAR, EntityPolarBear.class, CustomPolarBear.class),
-    Ozelot("Ozelot", 98, EntityType.OCELOT, EntityOcelot.class, CustomOcelot.class)
+    Villager("Villager", 120, EntityType.VILLAGER, EntityVillager.class, CustomVillager.class, CustomVillager::new),
+    Skeleton("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, CustomSkeleton.class, CustomSkeleton::new),
+    Zombie("Zombie", 54, EntityType.ZOMBIE, EntityZombie.class, CustomZombie.class, CustomZombie::new),
+    Slime("Slime", 55, EntityType.SLIME, EntitySlime.class, CustomSlime.class, CustomSlime::new),
+    Chicken("Chicken", 93, EntityType.CHICKEN, EntityChicken.class, CustomChicken.class, CustomChicken::new),
+    Cow("Cow", 92, EntityType.COW, EntityCow.class, CustomCow.class, CustomCow::new),
+    Spider("Spider", 52, EntityType.SPIDER, EntitySpider.class, CustomSpider.class, CustomSpider::new),
+    Blaze("Blaze", 61, EntityType.BLAZE, EntityBlaze.class, CustomBlaze.class, CustomBlaze::new),
+    Iron_Golem("VillagerGolem", 99, EntityType.IRON_GOLEM, EntityIronGolem.class, CustomIronGolem.class, CustomIronGolem::new),
+    Wolf("Wolf", 95, EntityType.WOLF, EntityWolf.class, CustomWolf.class, CustomWolf::new),
+    Silverfish("Silverfish", 60, EntityType.SILVERFISH, EntitySilverfish.class, CustomSilverfish.class, CustomSilverfish::new),
+    Pig_Zombie("PigZombie", 57, EntityType.PIG_ZOMBIE, EntityPigZombie.class, CustomPigZombie.class, CustomPigZombie::new),
+    Magma_Cube("LavaSlime", 62, EntityType.MAGMA_CUBE, EntityMagmaCube.class, CustomMagmaCube.class, CustomMagmaCube::new),
+    Cave_Spider("CaveSpider", 59, EntityType.CAVE_SPIDER, EntityCaveSpider.class, CustomCaveSpider.class, CustomCaveSpider::new),
+    Pig("Pig", 90, EntityType.PIG, EntityPig.class, CustomPig.class, CustomPig::new),
+    Sheep("Sheep", 91, EntityType.SHEEP, EntitySheep.class, CustomSheep.class, CustomSheep::new),
+    MushroomCow("MushroomCow", 96, EntityType.MUSHROOM_COW, EntityMushroomCow.class, CustomMushroomCow.class, CustomMushroomCow::new),
+    Rabbit("Rabbit", 101, EntityType.RABBIT, EntityRabbit.class, CustomRabbit.class, CustomRabbit::new),
+    Witch("Witch", 66, EntityType.WITCH, EntityWitch.class, CustomWitch.class, CustomWitch::new),
+    Horse("EntityHorse", 100, EntityType.HORSE, EntityHorse.class, CustomHorse.class, CustomHorse::new),
+    PolarBear("PolarBear", 102, EntityType.POLAR_BEAR, EntityPolarBear.class, CustomPolarBear.class, CustomPolarBear::new),
+    Ozelot("Ozelot", 98, EntityType.OCELOT, EntityOcelot.class, CustomOcelot.class, CustomOcelot::new)
     
     ;
 
@@ -88,13 +99,15 @@ public enum EntityRegistrar {
     private EntityType entityType;
     private Class<? extends EntityInsentient> nmsClass;
     private Class<? extends EntityInsentient> customClass;
+    private Function<? super World, ? extends Entity> function;
 
-    private EntityRegistrar(String name, int id, EntityType entityType, Class<? extends EntityInsentient> nmsClass, Class<? extends EntityInsentient> customClass) {
+    private EntityRegistrar(String name, int id, EntityType entityType, Class<? extends EntityInsentient> nmsClass, Class<? extends EntityInsentient> customClass, Function<? super World, ? extends Entity> function) {
         this.name = name;
         this.id = id;
         this.entityType = entityType;
         this.nmsClass = nmsClass;
         this.customClass = customClass;
+        this.function = function;
     }
 
     public String getName() {
@@ -120,41 +133,31 @@ public enum EntityRegistrar {
     /**
      * Register our entities.
      */
+    
+    public static void register() {
+
+    }
+    
+    public static EntityTypes<?> typesLoc;
     public static void registerEntities() {
 
-        for (EntityRegistrar entity : values())
-            a(entity.getCustomClass(), entity.getName(), entity.getID());
-
-        // BiomeBase#biomes became private.
-        BiomeBase[] biomes;
-        try {
-            biomes = (BiomeBase[]) getPrivateStatic(BiomeBase.class, "biomes");
-        } catch (Exception exc) {
-            // Unable to fetch.
-            return;
+        for (EntityRegistrar entity : values()) {
+        	
+        	
+            String customName = entity.getName();
+            @SuppressWarnings("unchecked")
+        	Map<Object, Type<?>> types = (Map<Object, Type<?>>) DataConverterRegistry.a().getSchema(15190).findChoiceType(DataConverterTypes.ENTITY).types();
+            
+            types.put("minecraft:" + customName, types.get("minecraft:" + entity.getNMSClass().toString().toLowerCase()));
+            EntityTypes.a<Entity> a = EntityTypes.a.a(entity.getCustomClass(), (Function<? super World, ? extends Entity>) entity.function);
+            
+    		EntityTypes<?> entitytypes = a.a(customName);
+    		IRegistry.ENTITY_TYPE.a(new MinecraftKey(customName), entitytypes);
+    		//EntityTypes.a("zombie", a.a(entity.getCustomClass(), ::new));
         }
-        for (BiomeBase biomeBase : biomes) {
-            if (biomeBase == null)
-                break;
+            
 
-            // This changed names from J, K, L and M.
-            // 1.9 - changed from at au av aw
-            for (String field : new String[] { "u", "v", "w", "x" })
-                try {
-                    Field list = BiomeBase.class.getDeclaredField(field);
-                    list.setAccessible(true);
-                    @SuppressWarnings("unchecked")
-                    List<BiomeMeta> mobList = (List<BiomeMeta>) list.get(biomeBase);
-
-                    // Write in our custom class.
-                    for (BiomeMeta meta : mobList)
-                        for (EntityRegistrar entity : values())
-                            if (entity.getNMSClass().equals(meta.b))
-                                meta.b = entity.getCustomClass();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-        }
+ 
     }
 
     /**
@@ -199,6 +202,7 @@ public enum EntityRegistrar {
             // The list fields changed names but update the meta regardless.
             for (String field : new String[] { "u", "v", "w", "x" })
                 try {
+                	/*
                     Field list = BiomeBase.class.getDeclaredField(field);
                     list.setAccessible(true);
                     @SuppressWarnings("unchecked")
@@ -207,8 +211,13 @@ public enum EntityRegistrar {
                     // Make sure the NMS class is written back over our custom class.
                     for (BiomeMeta meta : mobList)
                         for (EntityRegistrar entity : values())
-                            if (entity.getCustomClass().equals(meta.b))
+                            if (entity.getCustomClass().equals(meta.b)) {
+                            	
+                            	
                                 meta.b = entity.getNMSClass();
+                            }
+                    */
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

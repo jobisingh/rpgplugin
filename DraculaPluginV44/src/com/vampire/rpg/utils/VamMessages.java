@@ -7,23 +7,24 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_10_R1.CraftServer;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_13_R2.CraftServer;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import com.mojang.authlib.GameProfile;
 import com.vampire.rpg.Pluginc;
 
-import net.minecraft.server.v1_10_R1.EntityPlayer;
-import net.minecraft.server.v1_10_R1.EnumGamemode;
-import net.minecraft.server.v1_10_R1.IChatBaseComponent;
-import net.minecraft.server.v1_10_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_10_R1.MinecraftServer;
-import net.minecraft.server.v1_10_R1.PacketPlayOutChat;
-import net.minecraft.server.v1_10_R1.PacketPlayOutPlayerInfo;
-import net.minecraft.server.v1_10_R1.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
-import net.minecraft.server.v1_10_R1.PlayerInteractManager;
-import net.minecraft.server.v1_10_R1.WorldServer;
+import net.minecraft.server.v1_13_R2.DimensionManager;
+import net.minecraft.server.v1_13_R2.EntityPlayer;
+import net.minecraft.server.v1_13_R2.EnumGamemode;
+import net.minecraft.server.v1_13_R2.IChatBaseComponent;
+import net.minecraft.server.v1_13_R2.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_13_R2.MinecraftServer;
+import net.minecraft.server.v1_13_R2.PacketPlayOutChat;
+import net.minecraft.server.v1_13_R2.PacketPlayOutPlayerInfo;
+import net.minecraft.server.v1_13_R2.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
+import net.minecraft.server.v1_13_R2.PlayerInteractManager;
+import net.minecraft.server.v1_13_R2.WorldServer;
 
 public class VamMessages {
 
@@ -100,7 +101,7 @@ public class VamMessages {
 
     public static void sendActionBar(Player p, String msg) {
         IChatBaseComponent cbc = ChatSerializer.a("{\"text\": \"" + msg + "\"}");
-        PacketPlayOutChat ppoc = new PacketPlayOutChat(cbc, (byte) 2);
+        PacketPlayOutChat ppoc = new PacketPlayOutChat(cbc);
         ((CraftPlayer) p).getHandle().playerConnection.sendPacket(ppoc);
     }
 
@@ -214,7 +215,10 @@ public class VamMessages {
     //	p.get
     	GameProfile gp= new GameProfile(UUID.fromString("2e12870c-08ec-4337-bc2e-8fbf54e79853"), name);
     	MinecraftServer server=  ((CraftServer) Bukkit.getServer()).getServer();
-    	WorldServer world = server.getWorldServer(0);
+    	
+    	//CHANGED LINE 221 MAY CAUSE ISSUE!!
+    	
+    	WorldServer world = server.getWorldServer(DimensionManager.OVERWORLD);
     	PlayerInteractManager manager = new PlayerInteractManager(world);
     	EntityPlayer player = new EntityPlayer(server, world, gp, manager);
     	player.ping=100;

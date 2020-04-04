@@ -7,21 +7,22 @@ import org.bukkit.potion.PotionEffectType;
 
 import com.google.common.collect.Sets;
 
-import net.minecraft.server.v1_10_R1.Block;
-import net.minecraft.server.v1_10_R1.BlockPosition;
-import net.minecraft.server.v1_10_R1.Entity;
-import net.minecraft.server.v1_10_R1.EntityHuman;
-import net.minecraft.server.v1_10_R1.EntityLiving;
-import net.minecraft.server.v1_10_R1.EntitySkeleton;
-import net.minecraft.server.v1_10_R1.EnumSkeletonType;
-import net.minecraft.server.v1_10_R1.Material;
-import net.minecraft.server.v1_10_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_10_R1.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_10_R1.PathfinderGoalSelector;
-import net.minecraft.server.v1_10_R1.SoundEffect;
-import net.minecraft.server.v1_10_R1.SoundEffects;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.Block;
+import net.minecraft.server.v1_13_R2.BlockPosition;
+import net.minecraft.server.v1_13_R2.DamageSource;
+import net.minecraft.server.v1_13_R2.Entity;
+import net.minecraft.server.v1_13_R2.EntityHuman;
+import net.minecraft.server.v1_13_R2.EntityLiving;
+import net.minecraft.server.v1_13_R2.EntitySkeleton;
+import net.minecraft.server.v1_13_R2.IBlockData;
+import net.minecraft.server.v1_13_R2.Material;
+import net.minecraft.server.v1_13_R2.PathfinderGoalFloat;
+import net.minecraft.server.v1_13_R2.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_13_R2.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_13_R2.PathfinderGoalSelector;
+import net.minecraft.server.v1_13_R2.SoundEffect;
+import net.minecraft.server.v1_13_R2.SoundEffects;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomSkeleton extends EntitySkeleton implements Leashable {
 
@@ -46,51 +47,27 @@ public class CustomSkeleton extends EntitySkeleton implements Leashable {
     }
 
     @Override
-    public boolean a(Material material) {
-        return false;
-    }
-
-    @Override
     public void stopRiding() {
         return;
     }
 
     @Override
-    public boolean B(Entity entity) {
-        boolean r = super.B(entity);
-        if (this.getSkeletonType() == EnumSkeletonType.WITHER && entity instanceof EntityLiving) {
-            if (entity.getBukkitEntity() instanceof Player) {
-                ((Player) (entity.getBukkitEntity())).removePotionEffect(PotionEffectType.WITHER);
-            }
-        }
-        return r;
-    }
-
-    public void makeWither() {
-        setSkeletonType(EnumSkeletonType.WITHER);
-    }
-
-    public void makeStray() {
-        setSkeletonType(EnumSkeletonType.STRAY);
-    }
-
-    @Override
-    protected SoundEffect G() {
+    protected SoundEffect D() {
         return null;
     }
 
     @Override
-    protected SoundEffect bV() {
+    protected SoundEffect d(DamageSource damagesource) {
         return SoundEffects.ENTITY_PLAYER_HURT;
     }
 
     @Override
-    protected SoundEffect bW() {
-        return SoundEffects.gF;
+    protected SoundEffect cs() {
+        return SoundEffects.ENTITY_PLAYER_DEATH;
     }
 
     @Override
-    protected void a(BlockPosition blockposition, Block block) {
+    protected void a(BlockPosition blockposition, IBlockData iblockdata) {
         //makeSound("mob.skeleton.step", 0.15F, 1.0F);
     }
 

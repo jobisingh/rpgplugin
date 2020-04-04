@@ -10,6 +10,7 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.util.Vector;
 
 import com.vampire.rpg.particles.ParticleManager;
@@ -25,7 +26,7 @@ public class WingsEffect extends Effect {
 
     private static final Vector VERTICAL_VECTOR = new Vector(0, 1, 0);
 
-    public ParticleEffect particle = ParticleEffect.REDSTONE;
+    public Particle particle = Particle.REDSTONE;
     public float size = (float) 1 / 12;
     protected BufferedImage image = null;
 
@@ -89,7 +90,7 @@ public class WingsEffect extends Effect {
         loadFile(localFile);
     }
     
-    public void setParticle(ParticleEffect particle) { 
+    public void setParticle(Particle particle) { 
         this.particle = particle;
     }
 

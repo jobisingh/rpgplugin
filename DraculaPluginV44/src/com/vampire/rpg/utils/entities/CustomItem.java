@@ -1,7 +1,7 @@
 package com.vampire.rpg.utils.entities;
 
-import net.minecraft.server.v1_10_R1.EntityItem;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.EntityItem;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomItem extends EntityItem {
 

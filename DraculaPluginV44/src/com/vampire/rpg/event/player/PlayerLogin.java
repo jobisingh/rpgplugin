@@ -23,7 +23,7 @@ public class PlayerLogin implements Listener {
 	public void onPlayerLogin(PlayerLoginEvent e){
 		Player p=e.getPlayer();
 		//Banner b=new Banner();
-		ItemStack i=new ItemStack(Material.BANNER);
+		ItemStack i=new ItemStack(Material.WHITE_BANNER);
 		BannerMeta meta=(BannerMeta) i.getItemMeta();
 		meta.setBaseColor(DyeColor.LIGHT_BLUE);
 		meta.addPattern(new Pattern(DyeColor.GREEN, PatternType.STRIPE_BOTTOM));

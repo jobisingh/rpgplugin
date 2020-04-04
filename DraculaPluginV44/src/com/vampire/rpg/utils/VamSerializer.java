@@ -10,13 +10,13 @@ import java.util.regex.Pattern;
 import org.apache.commons.codec.binary.Base64;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 import com.google.common.io.BaseEncoding;
 
-import net.minecraft.server.v1_10_R1.NBTCompressedStreamTools;
-import net.minecraft.server.v1_10_R1.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTCompressedStreamTools;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
 
 public class VamSerializer {
 
@@ -109,7 +109,7 @@ public class VamSerializer {
 
         ByteArrayOutputStream outputStream = null;
         NBTTagCompound tagComp = new NBTTagCompound();
-        net.minecraft.server.v1_10_R1.ItemStack copy = CraftItemStack.asNMSCopy(itemStack);
+        net.minecraft.server.v1_13_R2.ItemStack copy = CraftItemStack.asNMSCopy(itemStack);
         if (copy == null)
             return "null";
         copy.save(tagComp);
@@ -140,7 +140,7 @@ public class VamSerializer {
         NBTTagCompound tagComp;
         try {
             tagComp = NBTCompressedStreamTools.a(inputStream);
-            net.minecraft.server.v1_10_R1.ItemStack item = net.minecraft.server.v1_10_R1.ItemStack.createStack(tagComp);
+            net.minecraft.server.v1_13_R2.ItemStack item = net.minecraft.server.v1_13_R2.ItemStack.a(tagComp);
             ItemStack bukkitItem = CraftItemStack.asBukkitCopy(item);
             return bukkitItem;
         } catch (IOException e) {

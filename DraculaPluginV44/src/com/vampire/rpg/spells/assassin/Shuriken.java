@@ -59,7 +59,7 @@ public class Shuriken extends SpellEffect {
                 damage *= 3.0;
                 break;
         }
-        ItemStack itemstack = new ItemStack(Material.CARPET, 1, DyeColor.BLACK.getData());
+        ItemStack itemstack = new ItemStack(Material.BLACK_CARPET, 1);
         final Item item = p.getWorld().dropItem(p.getLocation().add(0, p.getEyeHeight() * 0.71, 0), itemstack);
         item.setMetadata(VamMetadata.META_NO_PICKUP, new FixedMetadataValue(Spell.plugin, 0));
         Vector dir = p.getLocation().getDirection().normalize();

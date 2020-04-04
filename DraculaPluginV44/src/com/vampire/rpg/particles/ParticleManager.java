@@ -138,9 +138,9 @@ public class ParticleManager extends AbstractManager {
             }
             ItemStack item;
             if(pd.activeEffect != null && en == pd.activeEffect) {
-                item = new ItemStack(Material.WOOL, 1, DyeColor.LIME.getWoolData());
+                item = new ItemStack(Material.LIME_WOOL, 1);
             } else {
-                item = new ItemStack(Material.WOOL, 1, DyeColor.LIGHT_BLUE.getWoolData());
+                item = new ItemStack(Material.RED_WOOL, 1);
             }
             MenuManager.modifyMenu(p, i, new Object[][] {
                     {

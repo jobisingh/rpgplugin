@@ -4,18 +4,18 @@ import java.lang.reflect.Field;
 
 import com.google.common.collect.Sets;
 
-import net.minecraft.server.v1_10_R1.BlockPosition;
-import net.minecraft.server.v1_10_R1.EntityBlaze;
-import net.minecraft.server.v1_10_R1.EntityHuman;
-import net.minecraft.server.v1_10_R1.EntityLiving;
-import net.minecraft.server.v1_10_R1.EntitySmallFireball;
-import net.minecraft.server.v1_10_R1.MathHelper;
-import net.minecraft.server.v1_10_R1.PathfinderGoal;
-import net.minecraft.server.v1_10_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_10_R1.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_10_R1.PathfinderGoalSelector;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.BlockPosition;
+import net.minecraft.server.v1_13_R2.EntityBlaze;
+import net.minecraft.server.v1_13_R2.EntityHuman;
+import net.minecraft.server.v1_13_R2.EntityLiving;
+import net.minecraft.server.v1_13_R2.EntitySmallFireball;
+import net.minecraft.server.v1_13_R2.MathHelper;
+import net.minecraft.server.v1_13_R2.PathfinderGoal;
+import net.minecraft.server.v1_13_R2.PathfinderGoalFloat;
+import net.minecraft.server.v1_13_R2.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_13_R2.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_13_R2.PathfinderGoalSelector;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomBlaze extends EntityBlaze implements Leashable {
 
@@ -81,7 +81,7 @@ public class CustomBlaze extends EntityBlaze implements Leashable {
                 this.a.getControllerMove().a(localEntityLiving.locX, localEntityLiving.locY, localEntityLiving.locZ, 1.0D);
             } else if (d1 < 256.0D) {
                 double d2 = localEntityLiving.locX - this.a.locX;
-                double d3 = localEntityLiving.getBoundingBox().b + localEntityLiving.length / 2.0F - (this.a.locY + this.a.length / 2.0F);
+                double d3 = localEntityLiving.getBoundingBox().a() + localEntityLiving.length / 2.0F - (this.a.locY + this.a.length / 2.0F);
                 double d4 = localEntityLiving.locZ - this.a.locZ;
                 if (this.c <= 0) {
                     this.b += 1;
@@ -108,7 +108,7 @@ public class CustomBlaze extends EntityBlaze implements Leashable {
                 }
                 this.a.getControllerLook().a(localEntityLiving, 10.0F, 10.0F);
             } else {
-                this.a.getNavigation().o();
+                this.a.getNavigation().q();
                 this.a.getControllerMove().a(localEntityLiving.locX, localEntityLiving.locY, localEntityLiving.locZ, 1.0D);
             }
             super.e();

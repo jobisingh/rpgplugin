@@ -105,7 +105,7 @@ public class MobData {
         spellTicker.start();
     }
 
-    public void mount(Class<? extends net.minecraft.server.v1_10_R1.Entity> mountClass) {
+    public void mount(Class<? extends net.minecraft.server.v1_13_R2.Entity> mountClass) {
         if (entity == null || dead)
             return;
         mount = VamEntities.createLivingEntity(mountClass, entity.getLocation());
@@ -139,7 +139,10 @@ public class MobData {
     public void tickPoison() {
         poisonTicks--;
         Location loc = entity.getLocation().add(0, entity.getEyeHeight() * 0.6, 0);
-        BlockData data = new BlockData(Material.STAINED_CLAY, (byte) DyeColor.BLUE.getWoolData());
+        
+        //LINE 145 WAS MODIFIED, MAY NOT WORK!!
+        
+        BlockData data = new BlockData(Material.BLUE_TERRACOTTA, (byte) DyeColor.BLUE.getWoolData());
         VamParticles.showWithData(ParticleEffect.BLOCK_CRACK, loc, data, 10);
         double multiplier = 0.001;
         switch (poisonTier) {

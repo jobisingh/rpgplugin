@@ -6,9 +6,9 @@ import java.util.UUID;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftHorse;
-import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftInventoryHorse;
-import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftHorse;
+import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftInventoryHorse;
+import org.bukkit.craftbukkit.v1_13_R2.inventory.CraftItemStack;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Player;
@@ -34,7 +34,7 @@ import com.vampire.rpg.utils.VamTicks;
 import com.vampire.rpg.utils.entities.CustomHorse;
 
 import de.slikey.effectlib.util.ParticleEffect;
-import net.minecraft.server.v1_10_R1.NBTTagCompound;
+import net.minecraft.server.v1_13_R2.NBTTagCompound;
 
 public class MountsManager extends AbstractManager implements Listener{
 	public static HashMap<UUID,Mount> mountsUUID= new HashMap<UUID,Mount>();
@@ -58,7 +58,7 @@ public class MountsManager extends AbstractManager implements Listener{
 					 if(en.getPassenger()==null){
 						 Mount m=mountsUUID.get(en.getUniqueId());
 						 ItemStack i= ItemAPI.LoreItem(new ItemStack(Material.SADDLE), m.getDisplay()+" Mount",ChatColor.GRAY+"Right click to release mount");
-						 net.minecraft.server.v1_10_R1.ItemStack itemstack = CraftItemStack.asNMSCopy(i);
+						 net.minecraft.server.v1_13_R2.ItemStack itemstack = CraftItemStack.asNMSCopy(i);
 					        NBTTagCompound comp = itemstack.getTag();
 					        if(comp == null)
 					            comp = new NBTTagCompound();
@@ -119,7 +119,7 @@ public class MountsManager extends AbstractManager implements Listener{
 		 if(e.getItem().getItemMeta()!=null){			
 			 if(e.getItem().getItemMeta().getDisplayName()!=null){
 				 if(e.getItem().getItemMeta().getDisplayName().contains("Mount")){
-					 net.minecraft.server.v1_10_R1.ItemStack itemstack = CraftItemStack.asNMSCopy(e.getItem());
+					 net.minecraft.server.v1_13_R2.ItemStack itemstack = CraftItemStack.asNMSCopy(e.getItem());
 					 if(itemstack.getTag().hasKey("mountInfo")){
 						 String s=itemstack.getTag().getString("mountInfo");
 						 String[] sa= s.trim().split(":");

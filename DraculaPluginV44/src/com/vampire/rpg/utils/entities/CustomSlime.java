@@ -1,7 +1,7 @@
 package com.vampire.rpg.utils.entities;
 
-import net.minecraft.server.v1_10_R1.EntitySlime;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.EntitySlime;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomSlime extends EntitySlime {
 
@@ -24,11 +24,13 @@ public class CustomSlime extends EntitySlime {
 
     public boolean isTag = false;
 
+    
+    //THIS MIGHT NOT BE RIGHT
     @Override
-    public void U() {
+    public void W() {
         if (isTag)
             return;
-        super.U();
+        super.W();
     }
 
 }

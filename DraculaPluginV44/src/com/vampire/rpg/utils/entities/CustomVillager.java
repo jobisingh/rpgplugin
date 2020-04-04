@@ -4,17 +4,20 @@ import java.lang.reflect.Field;
 
 import com.google.common.collect.Sets;
 
-import net.minecraft.server.v1_10_R1.Entity;
-import net.minecraft.server.v1_10_R1.EntityHuman;
-import net.minecraft.server.v1_10_R1.EntityVillager;
-import net.minecraft.server.v1_10_R1.GenericAttributes;
-import net.minecraft.server.v1_10_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_10_R1.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_10_R1.PathfinderGoalSelector;
-import net.minecraft.server.v1_10_R1.SoundEffect;
-import net.minecraft.server.v1_10_R1.SoundEffects;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.DamageSource;
+import net.minecraft.server.v1_13_R2.Entity;
+import net.minecraft.server.v1_13_R2.EntityHuman;
+import net.minecraft.server.v1_13_R2.EntityVillager;
+import net.minecraft.server.v1_13_R2.FluidType;
+import net.minecraft.server.v1_13_R2.GenericAttributes;
+import net.minecraft.server.v1_13_R2.PathfinderGoalFloat;
+import net.minecraft.server.v1_13_R2.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_13_R2.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_13_R2.PathfinderGoalSelector;
+import net.minecraft.server.v1_13_R2.SoundEffect;
+import net.minecraft.server.v1_13_R2.SoundEffects;
+import net.minecraft.server.v1_13_R2.Tag;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomVillager extends EntityVillager implements Leashable {
 
@@ -49,10 +52,8 @@ public class CustomVillager extends EntityVillager implements Leashable {
     }
 
     @Override
-    protected void cn() {
-        
-    }
-    
+	protected void c(Tag<FluidType> tag) {
+	}
     @Override
     protected void C(Entity entity) {
         
@@ -64,7 +65,7 @@ public class CustomVillager extends EntityVillager implements Leashable {
     }
 
     @Override
-    public void g(double d0, double d1, double d2) {
+    public void setPosition(double d0, double d1, double d2) {
 
     }
 
@@ -73,18 +74,18 @@ public class CustomVillager extends EntityVillager implements Leashable {
     }
 
     @Override
-    protected SoundEffect G() {
+    protected SoundEffect D() {
         return null;
     }
 
     @Override
-    protected SoundEffect bV() {
+    protected SoundEffect d(DamageSource damagesource) {
         return SoundEffects.ENTITY_PLAYER_HURT;
     }
 
     @Override
-    protected SoundEffect bW() {
-        return SoundEffects.gF;
+    protected SoundEffect cs() {
+        return SoundEffects.ENTITY_PLAYER_DEATH;
     }
 
 }

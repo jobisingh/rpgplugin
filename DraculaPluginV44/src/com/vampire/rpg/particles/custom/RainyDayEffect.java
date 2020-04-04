@@ -2,6 +2,7 @@ package com.vampire.rpg.particles.custom;
 
 import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.util.Vector;
 
 import de.slikey.effectlib.Effect;
@@ -15,13 +16,13 @@ public class RainyDayEffect extends Effect {
     /*
      * Particle of the cloud
      */
-    public ParticleEffect cloudParticle = ParticleEffect.CLOUD;
+    public Particle cloudParticle = Particle.CLOUD;
     public Color cloudColor = null;
 
     /*
      * Particle of the rain/snow
      */
-    public ParticleEffect mainParticle = ParticleEffect.DRIP_WATER;
+    public Particle mainParticle = Particle.DRIP_WATER;
 
     /*
      * Size of the cloud

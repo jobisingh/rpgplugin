@@ -1,6 +1,7 @@
 package com.vampire.rpg.particles.custom;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.util.Vector;
 
 import de.slikey.effectlib.Effect;
@@ -20,7 +21,7 @@ public class ColoredHeartEffect extends Effect {
     /**
      * ParticleType of spawned particle
      */
-    public ParticleEffect particle = ParticleEffect.REDSTONE;
+    public Particle particle = Particle.REDSTONE;
 
     /**
      * Heart-particles per interation (100)

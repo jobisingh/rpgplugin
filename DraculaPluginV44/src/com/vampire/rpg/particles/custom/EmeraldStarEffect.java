@@ -1,13 +1,13 @@
 package com.vampire.rpg.particles.custom;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.util.Vector;
 
 import de.slikey.effectlib.Effect;
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.EffectType;
 import de.slikey.effectlib.util.MathUtils;
-import de.slikey.effectlib.util.ParticleEffect;
 import de.slikey.effectlib.util.RandomUtils;
 import de.slikey.effectlib.util.VectorUtils;
 
@@ -16,7 +16,7 @@ public class EmeraldStarEffect extends Effect {
     /**
      * Particles to create the star
      */
-    public ParticleEffect particle = ParticleEffect.VILLAGER_HAPPY;
+    public Particle particle = Particle.VILLAGER_HAPPY;
 
     /**
      * Particles per spike

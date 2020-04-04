@@ -38,10 +38,10 @@ public class OreManager extends AbstractManager implements Listener{
 		//make read files l8r
 		//register(new Ore(new Location(Pluginc.getInstance().getServer().getWorld("world"),1635,4,-899), OreType.SAPPHIRE, VamTicks.seconds(5)));
 		register(new Ore(new Location(Pluginc.getInstance().getServer().getWorld("world"),189,74,303), OreType.COAL, VamTicks.seconds(3)));
-		picks.add(Material.WOOD_PICKAXE);
+		picks.add(Material.WOODEN_PICKAXE);
 		picks.add(Material.STONE_PICKAXE);
 		picks.add(Material.IRON_PICKAXE);
-		picks.add(Material.GOLD_PICKAXE);
+		picks.add(Material.GOLDEN_PICKAXE);
 		picks.add(Material.DIAMOND_PICKAXE);
 	//	for(Location l:ores.keySet())
 	//		System.out.println(l.getX()+" "+l.getY()+" "+l.getZ());

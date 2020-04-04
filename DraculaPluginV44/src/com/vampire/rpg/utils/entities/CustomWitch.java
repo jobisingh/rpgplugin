@@ -4,17 +4,19 @@ import java.lang.reflect.Field;
 
 import com.google.common.collect.Sets;
 
-import net.minecraft.server.v1_10_R1.Block;
-import net.minecraft.server.v1_10_R1.BlockPosition;
-import net.minecraft.server.v1_10_R1.EntityHuman;
-import net.minecraft.server.v1_10_R1.EntityWitch;
-import net.minecraft.server.v1_10_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_10_R1.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_10_R1.PathfinderGoalSelector;
-import net.minecraft.server.v1_10_R1.SoundEffect;
-import net.minecraft.server.v1_10_R1.SoundEffects;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.Block;
+import net.minecraft.server.v1_13_R2.BlockPosition;
+import net.minecraft.server.v1_13_R2.DamageSource;
+import net.minecraft.server.v1_13_R2.EntityHuman;
+import net.minecraft.server.v1_13_R2.EntityWitch;
+import net.minecraft.server.v1_13_R2.IBlockData;
+import net.minecraft.server.v1_13_R2.PathfinderGoalFloat;
+import net.minecraft.server.v1_13_R2.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_13_R2.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_13_R2.PathfinderGoalSelector;
+import net.minecraft.server.v1_13_R2.SoundEffect;
+import net.minecraft.server.v1_13_R2.SoundEffects;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomWitch extends EntityWitch implements Leashable {
 
@@ -40,22 +42,22 @@ public class CustomWitch extends EntityWitch implements Leashable {
     }
 
     @Override
-    protected SoundEffect G() {
+    protected SoundEffect D() {
         return null;
     }
 
     @Override
-    protected SoundEffect bV() {
+    protected SoundEffect d(DamageSource damagesource) {
         return SoundEffects.ENTITY_PLAYER_HURT;
     }
 
     @Override
-    protected SoundEffect bW() {
-        return SoundEffects.gF;
+    protected SoundEffect cs() {
+        return SoundEffects.ENTITY_PLAYER_DEATH;
     }
 
     @Override
-    protected void a(BlockPosition blockposition, Block block) {
+    protected void a(BlockPosition blockposition, IBlockData iblockdata) {
         //makeSound("mob.skeleton.step", 0.15F, 1.0F);
     }
 }

@@ -4,13 +4,13 @@ import java.lang.reflect.Field;
 
 import com.google.common.collect.Sets;
 
-import net.minecraft.server.v1_10_R1.EntityHuman;
-import net.minecraft.server.v1_10_R1.EntityWolf;
-import net.minecraft.server.v1_10_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_10_R1.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_10_R1.PathfinderGoalSelector;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.EntityHuman;
+import net.minecraft.server.v1_13_R2.EntityWolf;
+import net.minecraft.server.v1_13_R2.PathfinderGoalFloat;
+import net.minecraft.server.v1_13_R2.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_13_R2.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_13_R2.PathfinderGoalSelector;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomWolf extends EntityWolf implements Leashable {
 
@@ -40,11 +40,11 @@ public class CustomWolf extends EntityWolf implements Leashable {
     }
 
     public void makeRedEyes(boolean state) {
-        byte b0 = ((Byte) this.datawatcher.get(bx)).byteValue();
+        byte b0 = ((Byte) this.datawatcher.get(bC)).byteValue();
         if (state) {
-            this.datawatcher.set(bx, Byte.valueOf((byte) (b0 | 0x2)));
+            this.datawatcher.set(bC, Byte.valueOf((byte) (b0 | 0x2)));
         } else {
-            this.datawatcher.set(bx, Byte.valueOf((byte) (b0 & 0xFFFFFFFD)));
+            this.datawatcher.set(bC, Byte.valueOf((byte) (b0 & 0xFFFFFFFD)));
         }
     }
 

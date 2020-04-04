@@ -27,8 +27,8 @@ import com.vampire.rpg.options.Option;
 
 import de.slikey.effectlib.util.ParticleEffect;
 import de.slikey.effectlib.util.ParticleEffect.ParticleData;
-import net.minecraft.server.v1_10_R1.MobEffect;
-import net.minecraft.server.v1_10_R1.PacketPlayOutEntityEffect;
+import net.minecraft.server.v1_13_R2.MobEffect;
+import net.minecraft.server.v1_13_R2.PacketPlayOutEntityEffect;
 
 public class VamParticles {
 
@@ -49,7 +49,7 @@ public class VamParticles {
             Object obj = getNMSClass("PacketPlayOutSpawnEntityWeather").getConstructor(getNMSClass("Entity")).newInstance(lighobj);
             if (p != null) {
                 sendPacket(p, obj);
-                p.playSound(loc, Sound.ENTITY_LIGHTNING_THUNDER, 25, 1);
+                p.playSound(loc, Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 25, 1);
             }
 
             for (Entity e : VamMath.getNearbyEntities(loc, 25)) {
@@ -57,7 +57,7 @@ public class VamParticles {
                     if (p != null && e == p)
                         continue;
                     sendPacket((Player) e, obj);
-                    ((Player) e).playSound(loc, Sound.ENTITY_LIGHTNING_THUNDER, 35, 1);
+                    ((Player) e).playSound(loc, Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 35, 1);
                 }
             }
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException e) {

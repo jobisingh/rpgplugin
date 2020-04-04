@@ -1,9 +1,9 @@
 package com.vampire.rpg.utils.entities;
 
-import net.minecraft.server.v1_10_R1.EntityCreature;
-import net.minecraft.server.v1_10_R1.PathfinderGoal;
-import net.minecraft.server.v1_10_R1.RandomPositionGenerator;
-import net.minecraft.server.v1_10_R1.Vec3D;
+import net.minecraft.server.v1_13_R2.EntityCreature;
+import net.minecraft.server.v1_13_R2.PathfinderGoal;
+import net.minecraft.server.v1_13_R2.RandomPositionGenerator;
+import net.minecraft.server.v1_13_R2.Vec3D;
 
 public class PathfinderGoalMobWander extends PathfinderGoal {
 
@@ -34,7 +34,7 @@ public class PathfinderGoalMobWander extends PathfinderGoal {
             this.startZ = a.locZ;
         }
         if (!this.g) {
-            if (this.a.bK() >= 100) {
+            if (this.a.cg() >= 100) {
                 return false;
             }
             if (this.a.getRandom().nextInt(this.f) != 0) {
@@ -61,14 +61,14 @@ public class PathfinderGoalMobWander extends PathfinderGoal {
     }
 
     public boolean b() {
-        return !this.a.getNavigation().n();
+        return !this.a.getNavigation().p();
     }
 
     public void c() {
         this.a.getNavigation().a(this.b, this.c, this.d, this.e);
     }
 
-    public void f() {
+    public void l() {
         this.g = true;
     }
 

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_10_R1.CraftServer;
-import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_13_R2.CraftServer;
+import org.bukkit.craftbukkit.v1_13_R2.CraftWorld;
 import org.bukkit.entity.Player;
 
 import com.vampire.rpg.PlayerData;
@@ -16,8 +16,8 @@ import com.vampire.rpg.utils.VamScheduler;
 import com.vampire.rpg.utils.VamTicks;
 
 import de.slikey.effectlib.util.ParticleEffect;
-import net.minecraft.server.v1_10_R1.BlockPosition;
-import net.minecraft.server.v1_10_R1.PacketPlayOutBlockBreakAnimation;
+import net.minecraft.server.v1_13_R2.BlockPosition;
+import net.minecraft.server.v1_13_R2.PacketPlayOutBlockBreakAnimation;
 
 public class SwordSpirit extends SpellEffect {
 

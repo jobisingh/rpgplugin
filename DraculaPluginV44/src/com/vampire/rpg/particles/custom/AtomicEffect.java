@@ -2,6 +2,7 @@ package com.vampire.rpg.particles.custom;
 
 import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.util.Vector;
 
 import de.slikey.effectlib.Effect;
@@ -17,13 +18,13 @@ public class AtomicEffect extends Effect {
     /**
      * ParticleType of the nucleus
      */
-    public ParticleEffect particleNucleus = ParticleEffect.REDSTONE;
+    public Particle particleNucleus = Particle.REDSTONE;
     public Color colorNucleus = Color.YELLOW;
 
     /**
      * ParticleType of orbitals
      */
-    public ParticleEffect particleOrbital = ParticleEffect.DRIP_LAVA;
+    public org.bukkit.Particle particleOrbital = Particle.DRIP_LAVA;
     public Color colorOrbital = null;
 
     /**

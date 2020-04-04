@@ -17,7 +17,7 @@ import com.vampire.rpg.professions.ProffesionManager;
 import com.vampire.rpg.regions.RegionManager;
 import com.vampire.rpg.utils.fanciful.FancyMessage;
 
-import net.minecraft.server.v1_10_R1.RunnableSaveScoreboard;
+//import net.minecraft.server.v1_10_R1.RunnableSaveScoreboard;
 
 public class MenuCompass extends AbstractManager implements Listener{
 
@@ -32,7 +32,7 @@ public class MenuCompass extends AbstractManager implements Listener{
 	}
 	public static void showMenu(Player p,PlayerData pd){
 		Inventory i= MenuManager.createMenu(p, p.getName()+"'s Menu", 6, new Object[][]{
-			{1,1,Material.REDSTONE_COMPARATOR,ChatColor.WHITE+"Settings",new Object[]{
+			{1,1,Material.COMPARATOR,ChatColor.WHITE+"Settings",new Object[]{
 					ChatColor.WHITE,
 					"Click here to access your settings"
 			},new Runnable() {
@@ -72,7 +72,7 @@ public class MenuCompass extends AbstractManager implements Listener{
 				}
 			}				
 			},
-			{3,1,Material.GOLD_PICKAXE,ChatColor.WHITE+"Proffesions",new Object[]{
+			{3,1,Material.GOLDEN_PICKAXE,ChatColor.WHITE+"Proffesions",new Object[]{
 					ChatColor.WHITE,
 					"Click here to view your proffesions",
 			},new Runnable() {
@@ -84,7 +84,7 @@ public class MenuCompass extends AbstractManager implements Listener{
 				}
 			}			
 			},
-			{3,4,Material.EYE_OF_ENDER,ChatColor.WHITE+"Effects",new Object[]{
+			{3,4,Material.ENDER_EYE,ChatColor.WHITE+"Effects",new Object[]{
 					ChatColor.WHITE,
 					"Click here to view your cosmetics and effects"
 			},new Runnable() {

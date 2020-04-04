@@ -1,6 +1,7 @@
 package com.vampire.rpg.particles.custom;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 
 import de.slikey.effectlib.Effect;
 import de.slikey.effectlib.EffectManager;
@@ -8,7 +9,7 @@ import de.slikey.effectlib.EffectType;
 import de.slikey.effectlib.util.ParticleEffect;
 
 public class BloodHelixEffect extends Effect {
-    private static final ParticleEffect particle = ParticleEffect.REDSTONE;
+    private static final Particle particle = Particle.REDSTONE;
     public static int strands = 2;
     public static int particles = 120;
     public static float radius = 1.3F;

@@ -1,6 +1,7 @@
 package com.vampire.rpg.particles.custom;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 
 import de.slikey.effectlib.Effect;
 import de.slikey.effectlib.EffectManager;
@@ -22,7 +23,7 @@ public class SparkRingEffect extends Effect {
     /**
      * Particle to display
      */
-    public ParticleEffect particle = ParticleEffect.FIREWORKS_SPARK;
+    public Particle particle = Particle.FIREWORKS_SPARK;
 
     /**
      * Interval of the circles

@@ -144,7 +144,7 @@ public class ItemManager extends AbstractManager {
                 }
                 //                int level = 0;
                 if (s.toUpperCase().startsWith("ELIXIR")) {
-                    m = Material.DRAGONS_BREATH;
+                    m = Material.DRAGON_BREATH;
                 }
                 if (m == null)
                     Log.error("Could not find material " + s + " for equipitem " + itemIdentifier);

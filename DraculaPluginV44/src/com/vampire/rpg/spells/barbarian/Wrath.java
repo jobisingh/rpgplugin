@@ -65,7 +65,7 @@ public class Wrath extends SpellEffect {
 	                loc = loc.add(0, 0.3, 0);
 	            }
 	        }
-	     VamSound.playSound(p, Sound.ENTITY_ENDERMEN_SCREAM, 3);
+	     VamSound.playSound(p, Sound.ENTITY_ENDERMAN_SCREAM, 3);
 		 pd.giveBuff(Wrath.BUFF_ID, value, 10000);
 		 Spell.notify(p, "You lose some HP, but feel much stronger.");
 	     Spell.notifyDelayed(p, "Your wrath wears off...", 10);

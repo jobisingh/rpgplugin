@@ -6,9 +6,9 @@ import java.util.HashSet;
 import java.util.UUID;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftEntity;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.LivingEntity;
@@ -28,16 +28,16 @@ import com.vampire.rpg.utils.VamTicks;
 import com.vampire.rpg.utils.entities.CustomMagmaCube;
 
 import de.slikey.effectlib.util.ParticleEffect;
-import net.minecraft.server.v1_10_R1.AttributeInstance;
-import net.minecraft.server.v1_10_R1.EntityArrow;
-import net.minecraft.server.v1_10_R1.EntityInsentient;
-import net.minecraft.server.v1_10_R1.EntityLiving;
-import net.minecraft.server.v1_10_R1.EntityTippedArrow;
-import net.minecraft.server.v1_10_R1.GenericAttributes;
-import net.minecraft.server.v1_10_R1.MathHelper;
-import net.minecraft.server.v1_10_R1.Packet;
-import net.minecraft.server.v1_10_R1.PacketListener;
-import net.minecraft.server.v1_10_R1.PacketPlayOutAnimation;
+import net.minecraft.server.v1_13_R2.AttributeInstance;
+import net.minecraft.server.v1_13_R2.EntityArrow;
+import net.minecraft.server.v1_13_R2.EntityInsentient;
+import net.minecraft.server.v1_13_R2.EntityLiving;
+import net.minecraft.server.v1_13_R2.EntityTippedArrow;
+import net.minecraft.server.v1_13_R2.GenericAttributes;
+import net.minecraft.server.v1_13_R2.MathHelper;
+import net.minecraft.server.v1_13_R2.Packet;
+import net.minecraft.server.v1_13_R2.PacketListener;
+import net.minecraft.server.v1_13_R2.PacketPlayOutAnimation;
 
 public class MobAI implements Runnable {
 
@@ -87,7 +87,7 @@ public class MobAI implements Runnable {
 
     public LivingEntity entity;
     public MobData md;
-    public net.minecraft.server.v1_10_R1.Entity nmsEntity;
+    public net.minecraft.server.v1_13_R2.Entity nmsEntity;
     public final Location originalLoc;
 
     private ArrayList<Player> nearbyPlayers;
@@ -289,7 +289,8 @@ public class MobAI implements Runnable {
                                 EntityArrow entityarrow = new EntityTippedArrow(e.world, e);
                                 EntityLiving etarget = (EntityLiving) (((CraftPlayer) target).getHandle());
                                 double d0 = etarget.locX - e.locX;
-                                double d1 = etarget.getBoundingBox().b + etarget.length / 3.0F - entityarrow.locY;
+                                //THIS USED TO BE .b() NOT 100% SURE IF IT WILL WORK
+                                double d1 = etarget.getBoundingBox().a() + etarget.length / 3.0F - entityarrow.locY;
                                 double d2 = etarget.locZ - e.locZ;
                                 double d3 = MathHelper.sqrt(d0 * d0 + d2 * d2);
                                 entityarrow.shoot(d0, d1 + d3 * 0.2D, d2, rangePower, 10);

@@ -2,6 +2,7 @@ package com.vampire.rpg.particles.custom;
 
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.util.Vector;
 
 import de.slikey.effectlib.Effect;
@@ -22,7 +23,7 @@ public class SwirlyEffect extends Effect {
     /**
      * ParticleType of spawned particle
      */
-    public ParticleEffect particle = ParticleEffect.SPELL_WITCH;
+    public Particle particle = Particle.SPELL_WITCH;
 
     /**
      * Ball particles total (150)

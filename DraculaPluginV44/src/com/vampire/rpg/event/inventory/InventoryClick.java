@@ -177,8 +177,8 @@ public class InventoryClick implements Listener {
 				e.setCancelled(true);
 				ItemStack is= CraftedAPI.getCraftedItemClass(e.getCurrentItem()).getCraftedItem();
 				inv.setItem(22,is);
-				inv.setItem(30, ItemAPI.LoreItem(new ItemStack(Material.WOOL,1,(short)13 ),ChatColor.DARK_GREEN+"Confirm",ChatColor.BLUE+"Click Here To Craft Item" ));
-				inv.setItem(32, ItemAPI.LoreItem(new ItemStack(Material.WOOL,1,(short)14 ),ChatColor.RED+"Cancel","Click Here To Cancel"));
+				inv.setItem(30, ItemAPI.LoreItem(new ItemStack(Material.GREEN_WOOL,1),ChatColor.DARK_GREEN+"Confirm",ChatColor.BLUE+"Click Here To Craft Item" ));
+				inv.setItem(32, ItemAPI.LoreItem(new ItemStack(Material.RED_WOOL,1 ),ChatColor.RED+"Cancel","Click Here To Cancel"));
 				p.openInventory(inv);
 			}
 		}
@@ -195,12 +195,12 @@ public class InventoryClick implements Listener {
 				e.setCancelled(true);
 				return;
 			}
-			if(e.getCurrentItem().getType()==Material.WOOL && e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.RED+"Cancel")){
+			if(e.getCurrentItem().getType().toString().toLowerCase().contains("wool") && e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.RED+"Cancel")){
 				e.setCancelled(true);
 				CraftedAPI.OpenCraftingInv(p);
 				return;
 			}
-			if(e.getCurrentItem().getType()==Material.WOOL && e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN+"Confirm")){
+			if(e.getCurrentItem().getType().toString().toLowerCase().contains("wool") && e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_GREEN+"Confirm")){
 				e.setCancelled(true);
 				if(CraftedAPI.hasRecipe(p, CraftedAPI.getCraftedItemClass(e.getClickedInventory().getItem(22)))){
 					for(int id=0;id<CraftedAPI.getCraftedItemClass(e.getClickedInventory().getItem(22)).getRecipe().length;id++){
@@ -216,7 +216,7 @@ public class InventoryClick implements Listener {
 					p.playSound(p.getLocation(), Sound.ENTITY_CAT_HISS,0.6F, 2);
 					p.playSound(p.getLocation(), Sound.ENTITY_WITHER_SKELETON_HURT,0.6F, 2);
 					p.playSound(p.getLocation(), Sound.BLOCK_GRAVEL_PLACE,0.6F, 2);
-					p.playSound(p.getLocation(), Sound.ENTITY_LIGHTNING_THUNDER,0.6F, 2);
+					p.playSound(p.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER,0.6F, 2);
 						new BukkitRunnable(){
 							public void run(){
 								p.getWorld().strikeLightningEffect(p.getLocation());

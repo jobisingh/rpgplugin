@@ -4,13 +4,14 @@ import java.lang.reflect.Field;
 
 import com.google.common.collect.Sets;
 
-import net.minecraft.server.v1_10_R1.EntityHuman;
-import net.minecraft.server.v1_10_R1.EntitySheep;
-import net.minecraft.server.v1_10_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_10_R1.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_10_R1.PathfinderGoalSelector;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_13_R2.EntityHuman;
+import net.minecraft.server.v1_13_R2.EntitySheep;
+import net.minecraft.server.v1_13_R2.EnumMoveType;
+import net.minecraft.server.v1_13_R2.PathfinderGoalFloat;
+import net.minecraft.server.v1_13_R2.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_13_R2.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_13_R2.PathfinderGoalSelector;
+import net.minecraft.server.v1_13_R2.World;
 
 public class CustomSheep extends EntitySheep implements Leashable {
 
@@ -39,11 +40,11 @@ public class CustomSheep extends EntitySheep implements Leashable {
     
     public boolean gravity = true;
     @Override
-    public void g(float f, float f1) {
+    public void c(float f, float f1) {
         if(gravity) {
-            super.g(f, f1);
+            super.c(f, f1);
         } else {
-            move(customX, customY, customZ);
+            move(EnumMoveType.SELF, customX, customY, customZ);
         }
     }
 

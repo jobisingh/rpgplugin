@@ -299,7 +299,7 @@ public enum NPCType {
             case WOLF_SILVER:
                 le = VamEntities.createLivingEntity(CustomWolf.class, loc);
                 ((Wolf) le).setTamed(true);
-                ((Wolf) le).setCollarColor(DyeColor.SILVER);
+                ((Wolf) le).setCollarColor(DyeColor.LIGHT_GRAY);
                 break;
             case WOLF_WHITE:
                 le = VamEntities.createLivingEntity(CustomWolf.class, loc);

@@ -96,7 +96,7 @@ public class EnvironmentManager extends AbstractManager {
 
     @EventHandler
     public void onEntityInteract(EntityInteractEvent event) {
-        if (event.getBlock().getType() == Material.SOIL)
+        if (event.getBlock().getType() == Material.LEGACY_SOIL)
             event.setCancelled(true);
     }
 
@@ -254,13 +254,15 @@ public class EnvironmentManager extends AbstractManager {
     public void onPlayerInteractCrops(PlayerInteractEvent event) {
         if (event.getAction() == Action.PHYSICAL) {
             Block b = event.getClickedBlock();
-            if (b.getType() == Material.SOIL) {
+            if (b.getType() == Material.LEGACY_SOIL) {
                 event.setCancelled(true);
-                b.setTypeIdAndData(b.getType().getId(), b.getData(), true);
+                b.setType(b.getType(), true);
+                b.setBlockData(b.getBlockData());
             }
-            if (b.getType() == Material.CROPS) {
+            if (b.getType() == Material.LEGACY_CROPS) {
                 event.setCancelled(true);
-                b.setTypeIdAndData(b.getType().getId(), b.getData(), true);
+                b.setType(b.getType(), true);
+                b.setBlockData(b.getBlockData());
             }
         }
     }
@@ -375,12 +377,12 @@ public class EnvironmentManager extends AbstractManager {
 
     private static final Material[] RESTRICTED_TYPES = {
             Material.ANVIL,
-            Material.ENCHANTMENT_TABLE,
-            Material.WORKBENCH,
+            Material.ENCHANTING_TABLE,
+            Material.CRAFTING_TABLE,
             Material.DISPENSER,
             Material.FURNACE,
             Material.BREWING_STAND,
-            Material.BURNING_FURNACE,
+            Material.LEGACY_BURNING_FURNACE,
             Material.TRAPPED_CHEST,
             Material.HOPPER,
             Material.HOPPER_MINECART,
@@ -461,7 +463,7 @@ public class EnvironmentManager extends AbstractManager {
 
     @EventHandler
     public void onEatCake(PlayerInteractEvent event) {
-        if (event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.CAKE_BLOCK) {
+        if (event.getClickedBlock() != null && event.getClickedBlock().getType() == Material.CAKE) {
             event.setCancelled(true);
         }
     }

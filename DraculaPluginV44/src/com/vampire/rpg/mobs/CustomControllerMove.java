@@ -1,12 +1,12 @@
 package com.vampire.rpg.mobs;
 
-import net.minecraft.server.v1_10_R1.ControllerMove;
-import net.minecraft.server.v1_10_R1.EntityInsentient;
-import net.minecraft.server.v1_10_R1.GenericAttributes;
-import net.minecraft.server.v1_10_R1.MathHelper;
-import net.minecraft.server.v1_10_R1.NavigationAbstract;
-import net.minecraft.server.v1_10_R1.PathType;
-import net.minecraft.server.v1_10_R1.PathfinderAbstract;
+import net.minecraft.server.v1_13_R2.ControllerMove;
+import net.minecraft.server.v1_13_R2.EntityInsentient;
+import net.minecraft.server.v1_13_R2.GenericAttributes;
+import net.minecraft.server.v1_13_R2.MathHelper;
+import net.minecraft.server.v1_13_R2.NavigationAbstract;
+import net.minecraft.server.v1_13_R2.PathType;
+import net.minecraft.server.v1_13_R2.PathfinderAbstract;
 
 public class CustomControllerMove extends ControllerMove {
     protected final EntityInsentient a;
@@ -23,11 +23,13 @@ public class CustomControllerMove extends ControllerMove {
         this.a = paramEntityInsentient;
     }
 
-    public boolean a() {
+    //Used to be a()
+    public boolean b() {
         return this.h == Operation.MOVE_TO;
     }
-
-    public double b() {
+    
+    //used to be b()
+    public double c() {
         return this.e;
     }
 
@@ -55,8 +57,9 @@ public class CustomControllerMove extends ControllerMove {
         this.f = paramControllerMove.f;
         this.g = paramControllerMove.g;
     }
-
-    public void c() {
+    
+    //Used to be c()
+    public void a() {
         float f9;
         if (this.h == Operation.STRAFE) {
             float f1 = (float) this.a.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).getValue();
@@ -79,16 +82,16 @@ public class CustomControllerMove extends ControllerMove {
 
             NavigationAbstract localNavigationAbstract = this.a.getNavigation();
             if (localNavigationAbstract != null) {
-                PathfinderAbstract localPathfinderAbstract = localNavigationAbstract.q();
+                PathfinderAbstract localPathfinderAbstract = localNavigationAbstract.s();
                 if ((localPathfinderAbstract != null) && (localPathfinderAbstract.a(this.a.world, MathHelper.floor(this.a.locX + f8), MathHelper.floor(this.a.locY), MathHelper.floor(this.a.locZ + f9)) != PathType.WALKABLE)) {
                     this.f = 1.0F;
                     this.g = 0.0F;
                     f2 = f1;
                 }
             }
-            this.a.l(f2);
+            this.a.o(f2);
             this.a.o(this.f);
-            this.a.p(this.g);
+            this.a.h(this.g);
 
             this.h = Operation.WAIT;
         } else if (this.h == Operation.MOVE_TO) {
@@ -102,10 +105,10 @@ public class CustomControllerMove extends ControllerMove {
                 this.a.o(0.0F);
                 return;
             }
-            f9 = (float) (MathHelper.b(d2, d1) * 57.2957763671875D) - 90.0F;
+            f9 = (float) (MathHelper.c(d2, d1) * 57.2957763671875D) - 90.0F;
 
             this.a.yaw = a(this.a.yaw, f9, 90.0F);
-            this.a.l((float) (this.e * this.a.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).getValue()));
+            this.a.o((float) (this.e * this.a.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).getValue()));
             if ((d3 > this.a.P) && (d1 * d1 + d2 * d2 < Math.max(1.0F, this.a.width))) {
                 this.a.getControllerJump().a();
             }
