@@ -875,7 +875,7 @@ public class PlayerList {
 			return Optional.empty();
 		}
 
-		private static Optional<Field> getField(Class<?> clazz, String name) {
+		public static Optional<Field> getField(Class<?> clazz, String name) {
 			try {
 				return Optional.of(clazz.getField(name));
 			} catch (NoSuchFieldException e) {

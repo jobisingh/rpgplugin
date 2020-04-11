@@ -24,10 +24,12 @@ import com.vampire.rpg.crafting.CraftedItem;
 
 public class Craft implements CommandExecutor{
 	public boolean onCommand(CommandSender sender, Command cmd, String label2, String[] arg3) {
+		Bukkit.getLogger().info("Ran Some Code");
 		if(!(sender instanceof Player)){
 			return true;
 		}
-		Player p =(Player)sender;	
+		Player p =(Player)sender;
+		p.sendMessage("Haloo");
 		CraftedAPI.OpenCraftingInv(p);
 		return true;
 	}

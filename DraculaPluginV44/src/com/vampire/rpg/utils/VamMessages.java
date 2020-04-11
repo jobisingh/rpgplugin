@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import com.mojang.authlib.GameProfile;
 import com.vampire.rpg.Pluginc;
 
+import net.minecraft.server.v1_13_R2.ChatComponentText;
 import net.minecraft.server.v1_13_R2.DimensionManager;
 import net.minecraft.server.v1_13_R2.EntityPlayer;
 import net.minecraft.server.v1_13_R2.EnumGamemode;
@@ -22,6 +23,7 @@ import net.minecraft.server.v1_13_R2.IChatBaseComponent.ChatSerializer;
 import net.minecraft.server.v1_13_R2.MinecraftServer;
 import net.minecraft.server.v1_13_R2.PacketPlayOutChat;
 import net.minecraft.server.v1_13_R2.PacketPlayOutPlayerInfo;
+import net.minecraft.server.v1_13_R2.PacketPlayOutPlayerListHeaderFooter;
 import net.minecraft.server.v1_13_R2.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
 import net.minecraft.server.v1_13_R2.PlayerInteractManager;
 import net.minecraft.server.v1_13_R2.WorldServer;
@@ -177,15 +179,22 @@ public class VamMessages {
         header = header.replaceAll("%player%", player.getDisplayName());
         footer = footer.replaceAll("%player%", player.getDisplayName());
         try {
-            Object tabHeader = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", new Class[] { String.class }).invoke(null, new Object[] {
-                    "{\"text\":\"" + header + "\"}" });
-            Object tabFooter = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", new Class[] { String.class }).invoke(null, new Object[] {
-                    "{\"text\":\"" + footer + "\"}" });
-            Constructor<?> titleConstructor = getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor(new Class[] { getNMSClass("IChatBaseComponent") });
-            Object packet = titleConstructor.newInstance(new Object[] { tabHeader });
-            Field field = packet.getClass().getDeclaredField("b");
-            field.setAccessible(true);
-            field.set(packet, tabFooter);
+        	IChatBaseComponent tabHeader = ChatSerializer.b(header);
+        	Object tabFooter = ChatSerializer.b(footer);
+            //Object tabHeader = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", new Class[] { String.class }).invoke(null, new Object[] {
+           //         "{\"text\":\"" + header + "\"}" });
+           // Object tabFooter = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", new Class[] { String.class }).invoke(null, new Object[] {
+           //         "{\"text\":\"" + footer + "\"}" });
+            
+    		PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter();
+            
+            Field fieldA = packet.getClass().getDeclaredField("header");
+            fieldA.setAccessible(true);
+            fieldA.set(packet, tabHeader);
+    		
+            Field fieldB = packet.getClass().getDeclaredField("footer");
+            fieldB.setAccessible(true);
+            fieldB.set(packet, tabFooter);
             sendPacket(player, packet);
         } catch (Exception ex) {
             ex.printStackTrace();

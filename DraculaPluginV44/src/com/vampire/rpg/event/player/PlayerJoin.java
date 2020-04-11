@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
@@ -24,7 +25,7 @@ import com.vampire.rpg.utils.VamTicks;
 public class PlayerJoin implements Listener {
 	//Statement statemnet= Pluginc.instance
 	public Boolean noSQL= false;
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent ev){
 		Player p=(Player)ev.getPlayer();
 		Inventory inv= Bukkit.createInventory(p, 54, "Bank");
@@ -32,6 +33,7 @@ public class PlayerJoin implements Listener {
 			
 			@Override
 			public void run() {
+				
 				Pluginc.getInstance().addPD(p);
 				p.setMaxHealth(20);
 				p.setHealth(20);

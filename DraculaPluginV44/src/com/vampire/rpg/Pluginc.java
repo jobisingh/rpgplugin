@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
@@ -101,7 +102,7 @@ public class Pluginc extends JavaPlugin{
 	public static ArrayList<PlayerData> pdlist;
 	private ProtocolManager protocolManager;
 	
-	public static String Owner_Name= "FILL_HERE";
+	public static String Owner_Name= "jobisingh";
 	public static String Host_Name= "FILL_HERE";
 	public static String server_name= "PLACEHOLDER";
     private final static HashMap<String, PlayerData> playerdatas = new HashMap<String, PlayerData>();
@@ -135,6 +136,7 @@ public class Pluginc extends JavaPlugin{
 		//Table<UUID, String, String> entityName = HashBasedTable.create();
 	}
 	public void onEnable(){
+		
 		instance=this;
 		PluginDescriptionFile pdfile = getDescription();
 		/* host ="108.166.163.130";
@@ -162,6 +164,8 @@ public class Pluginc extends JavaPlugin{
 	                        if (packeta.getEntity(e.getPlayer().getWorld()).getType() != EntityType.DROPPED_ITEM) return;
 	                    } catch (NullPointerException npe) { return; }
 	                    PlayerData pd=Pluginc.getPD(e.getPlayer());
+	                    //REMOVE LINE BELOW
+	                    if(pd == null) return;;
 	                    if(!pd.getOption(Option.TAGS_ABOVE_ITEMS))
 	                    	return;
 	                    List<WrappedWatchableObject> meta = packeta.getMetadata();
@@ -176,7 +180,8 @@ public class Pluginc extends JavaPlugin{
 	                    if(stack.getItemMeta().getDisplayName()==null)
 	                    	return;
 	                    String name=stack.getItemMeta().getDisplayName();
-	                    if(ChatColor.getByChar(name)==ChatColor.WHITE)
+	                    
+	                    if(ChatColor.stripColor(name)==name)
 	                    	return;
 	                    WrappedWatchableObject oname = meta.get(2);
 	                    oname.setValue(name);
@@ -207,7 +212,7 @@ public class Pluginc extends JavaPlugin{
 		 });
 		 new DropManager(this);
 		 loadWorlds();
-		 EntityRegistrar.registerEntities();
+		// EntityRegistrar.registerEntities();
 		// Listeners
 		//getServer().getPluginManager().registerEvents(this, this);
 		new SQLManager(this);
@@ -246,7 +251,7 @@ public class Pluginc extends JavaPlugin{
 	//	new ShopManager(this);
 	//	new HaybaleManager(this);
 	//	new GenericNPCManager(this);
-		getServer().createWorld(new WorldCreator("testing"));
+	//	getServer().createWorld(new WorldCreator("testing"));
 		saveDefaultConfig();
 		registerConfig();
 		registerCommands();

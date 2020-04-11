@@ -7,7 +7,7 @@ public enum SqlItem {
 	LEVEL("Level","bigint"),
 	EXP("Exp","int"),
 	CLASS("ClassType","TINYTEXT"),
-	RANK("Rank","TINYTEXT"),
+	RANK("pRank","TINYTEXT"),
 	FIRST_LOGIN("FirstPlayed","TIMESTAMP"), //current timestamp
 	LOCATION("Location","TINYTEXT"),
 	RECIPES("KnownRecipes","TEXT"),

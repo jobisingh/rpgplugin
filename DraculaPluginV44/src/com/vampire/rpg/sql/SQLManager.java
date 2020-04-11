@@ -40,8 +40,8 @@ public class SQLManager extends AbstractManager {
 	@Override
 	public void initialize() {
 		host="localhost";
-	     port = 1111;
-	     database ="data_base_name";
+	     port = 3308;
+	     database ="mydb";
 	     username ="root";
 	     password = "";
 	     File dir = new File(Pluginc.getInstance().getDataFolder(), "database");
@@ -123,7 +123,7 @@ public class SQLManager extends AbstractManager {
 		try{
 			PlayerData pd= Pluginc.getPD(p);
 			PreparedStatement sql= connection.prepareStatement("UPDATE `main` SET Name=?, Level=?,"
-					+ "Bank=?,KnownRecipes=?,ClassType=?,Rank=?,"
+					+ "Bank=?,KnownRecipes=?,ClassType=?,pRank=?,"
 					+ "SpellRLL=?,SpellRLR=?,SpellRRL=?,SpellRRR=?,SpLocation=?,Options=?,Mailbox=?,Professions=?,questProgress=?,trinket=?,trinketExp=?,Exp=? WHERE UUID=?;");
 			sql.setString(1, p.getName());
 			sql.setInt(2, pd.level);
@@ -173,7 +173,7 @@ public class SQLManager extends AbstractManager {
 			if(tableExists()){
 				if(hasData(p)){
 					PreparedStatement sql=connection.prepareStatement("SELECT Level,Bank,KnownRecipes,ID,FirstPlayed,"
-							+ "ClassType,Rank,SpellRLL,SpellRLR,SpellRRL,SpellRRR,SpLocation,Options,Mailbox,Professions,questProgress,trinket,trinketExp,Exp FROM main WHERE UUID=?;");
+							+ "ClassType,pRank,SpellRLL,SpellRLR,SpellRRL,SpellRRR,SpLocation,Options,Mailbox,Professions,questProgress,trinket,trinketExp,Exp FROM main WHERE UUID=?;");
 					sql.setString(1, p.getUniqueId().toString());
 					ResultSet result = sql.executeQuery();
 					result.next();
@@ -185,7 +185,7 @@ public class SQLManager extends AbstractManager {
 					p.sendMessage(org.bukkit.ChatColor.GREEN+"ID IS:"+ String.valueOf(result.getInt("ID")));
 					pd.firstplayed= result.getTimestamp("FirstPlayed");
 					pd.classType= ClassType.getClassType(result.getString("ClassType"));
-					pd.rank=Rank.valueOf(result.getString("Rank").toUpperCase());
+					pd.rank=Rank.valueOf(result.getString("pRank").toUpperCase());
 					pd.optionsList = pd.deserializeOptions(result.getString("Options"));
 					pd.spell_RLL=pd.getSpellForName(result.getString("SpellRLL"));
 					pd.spell_RLR=pd.getSpellForName(result.getString("SpellRLR"));
@@ -222,7 +222,7 @@ public class SQLManager extends AbstractManager {
 					result.close();
 				}
 				else{																																					//11	//12 		//13	//14		//15  //16    //17        //18			//19	//20	  //21
-					PreparedStatement sql= connection.prepareStatement("INSERT INTO `main`(UUID,Name,Level,Bank,Inventory,Location,ClassType,Rank,KnownRecipes,Options,SpellRLL,SpellRLR,SpellRRL,SpellRRR,SpLocation,Mailbox,Professions,questProgress,trinket,trinketExp,Exp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+					PreparedStatement sql= connection.prepareStatement("INSERT INTO `main`(UUID,Name,Level,Bank,Inventory,Location,ClassType,pRank,KnownRecipes,Options,SpellRLL,SpellRLR,SpellRRL,SpellRRR,SpLocation,Mailbox,Professions,questProgress,trinket,trinketExp,Exp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
 					sql.setString(1, p.getUniqueId().toString());
 					sql.setString(2, p.getName());
 					sql.setInt(3, 1);
@@ -255,7 +255,7 @@ public class SQLManager extends AbstractManager {
 					sql.execute();
 					sql.close();
 					PreparedStatement sql1=connection.prepareStatement("SELECT Level,Bank,KnownRecipes,ID,FirstPlayed,"
-							+ "ClassType,Rank,SpellRLL,SpellRLR,SpellRRL,SpellRRR,SpLocation,Options,Mailbox,Professions,questProgress,trinket,trinketExp,Exp FROM main WHERE UUID=?;");
+							+ "ClassType,pRank,SpellRLL,SpellRLR,SpellRRL,SpellRRR,SpLocation,Options,Mailbox,Professions,questProgress,trinket,trinketExp,Exp FROM main WHERE UUID=?;");
 					sql1.setString(1, p.getUniqueId().toString());
 					ResultSet result = sql1.executeQuery();
 					result.next();
@@ -269,7 +269,7 @@ public class SQLManager extends AbstractManager {
 					p.sendMessage(org.bukkit.ChatColor.GREEN+"ID IS:"+ String.valueOf(result.getInt("ID")));
 					pd.firstplayed= result.getTimestamp("FirstPlayed");
 					pd.classType= ClassType.getClassType(result.getString("ClassType"));
-					pd.rank=Rank.valueOf(result.getString("Rank").toUpperCase());
+					pd.rank=Rank.valueOf(result.getString("pRank").toUpperCase());
 					pd.optionsList = pd.deserializeOptions(result.getString("Options"));
 					pd.spell_RLL=pd.getSpellForName(result.getString("SpellRLL"));
 					pd.spell_RLR=pd.getSpellForName(result.getString("SpellRLR"));
@@ -317,16 +317,20 @@ public class SQLManager extends AbstractManager {
 			sb.append(s.sqlType+" ");
 			sb.append("NOT NULL ");
 			if(s.getID().equals("FirstPlayed"))
-			sb.append("DEFAULT CURRENT_TIMESTAMP ");
+			sb.append("DEFAULT CURRENT_TIMESTAMP");
 			if(s.getID().equals("ID"))
 				sb.append("AUTO_INCREMENT");
 			sb.append(",");
+
 		}
 		String s=sb.toString().trim();
+
 		s+="PRIMARY KEY (ID)";
 		if (s.endsWith(","))
 	        s = s.substring(0, s.length() - 1);
 		s+=");";
+		
+		System.out.println(ChatColor.RED+ "SPECIAL STRINGY WITH P: " + s);
 	//	VamMessages.announce(s);
 		OpenConnetion();
 		try {

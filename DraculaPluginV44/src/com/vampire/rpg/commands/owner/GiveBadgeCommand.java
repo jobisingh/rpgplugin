@@ -22,7 +22,7 @@ public class GiveBadgeCommand extends AbstractCommand {
     @Override
     public void executePlayer(Player p, PlayerData pd, String[] args) {
         if (args.length != 2) {
-            p.sendMessage(ChatColor.RED + "Use as /givebadge <name> <badge>");
+            p.sendMessage(ChatColor.RED + "Use as /givebadge <badge> <name>");
         } else if (args.length == 2) {
             Badge badge = Badge.valueOf(args[1].toUpperCase());
             Player p2 = plugin.getServer().getPlayer(args[0]);

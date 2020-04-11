@@ -3,12 +3,19 @@ package com.vampire.rpg.mobs;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
+import java.util.stream.StreamSupport;
 
+import javax.annotation.Nullable;
+
+import org.apache.commons.lang3.Validate;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.types.Type;
+import com.vampire.rpg.utils.PlayerList.ReflectionUtil;
 import com.vampire.rpg.utils.entities.CustomBlaze;
 import com.vampire.rpg.utils.entities.CustomCaveSpider;
 import com.vampire.rpg.utils.entities.CustomChicken;
@@ -50,6 +57,7 @@ import net.minecraft.server.v1_13_R2.EntityOcelot;
 import net.minecraft.server.v1_13_R2.EntityPig;
 import net.minecraft.server.v1_13_R2.EntityPigZombie;
 import net.minecraft.server.v1_13_R2.EntityPolarBear;
+import net.minecraft.server.v1_13_R2.EntityPositionTypes;
 import net.minecraft.server.v1_13_R2.EntityRabbit;
 import net.minecraft.server.v1_13_R2.EntitySheep;
 import net.minecraft.server.v1_13_R2.EntitySilverfish;
@@ -137,7 +145,55 @@ public enum EntityRegistrar {
     public static void register() {
 
     }
-    
+    /*
+    @SuppressWarnings("unchecked") @Nullable
+    public static <T extends Entity> void registerEntity(String name, Class<T> customClass, EntityType entityType, Function<World, T> spawnFunction,
+            boolean overrideSpawn, EnumCreatureType creatureType)
+    {
+        //Creating a minecraft key with the name
+        MinecraftKey customEntityKey = MinecraftKey.a(name);
+        Validate.notNull(customEntityKey, "Using an invalid name for registering a custom entity. Name: ", name);
+
+        if(IRegistry.ENTITY_TYPE.c(customEntityKey))
+        {
+            Bukkit.getLogger().info("An entity named " + name + " already exists.");
+            return;
+        }
+       
+        //Getting the data converter type for the default entity and adding that to the custom mob.
+        Map<Object, Type<?>> typeMap = (Map<Object, Type<?>>) DataConverterRegistry.a().getSchema(DataFixUtils.makeKey(1628)).findChoiceType(DataConverterTypes.n).types();
+        typeMap.put(customEntityKey.toString(), typeMap.get(MinecraftKey.a(entityType.name()).toString()));
+
+        EntityTypes<?> customEntityNMSEntityType = EntityTypes.a(name, EntityTypes.a.a(customClass, spawnFunction));
+       
+        //Is an insentient entity? Also copy the EntityPositionTypes value.
+        if(customClass.isAssignableFrom(EntityInsentient.class))
+        {
+            Map<EntityTypes<?>, Object> positionMap = (Map<EntityTypes<?>, Object>) Validator.validateField(ReflectionUtil.getField(EntityPositionTypes.class, "a"), null);
+
+            Object entityInformation = positionMap.get(entityType);
+            positionMap.put(customEntityNMSEntityType, entityInformation);
+        }
+       
+        //Do you want to overidde spawn and is a creature?
+        if(overrideSpawn)
+        {
+            //The get nms EnumCreatureType, and override and biome spawn list in which the default mob is contained and replacing it.
+            Field metaList = BiomeBase.class.getDeclaredField("u");
+            metaList.setAccessible(true);
+            for (BiomeBase base : BiomeBase.aG) {
+                List<BiomeMeta> v = (List<BiomeMeta>) metaList.get(base);
+                for (BiomeMeta meta : v) {
+                        meta.b = (EntityTypes<? extends EntityInsentient>) typesLoc;
+                        break;
+                }
+            }
+        
+        }
+        //This is just a wrapper which contains the class and nms EntityTypes.
+        return;
+    }
+    */
     public static EntityTypes<?> typesLoc;
     public static void registerEntities() {
 
@@ -148,14 +204,35 @@ public enum EntityRegistrar {
             @SuppressWarnings("unchecked")
         	Map<Object, Type<?>> types = (Map<Object, Type<?>>) DataConverterRegistry.a().getSchema(15190).findChoiceType(DataConverterTypes.ENTITY).types();
             
-            types.put("minecraft:" + customName, types.get("minecraft:" + entity.getNMSClass().toString().toLowerCase()));
+            types.put("minecraft:" + customName.toLowerCase(), types.get("minecraft:" + entity.getName().toString().toLowerCase()));
             EntityTypes.a<Entity> a = EntityTypes.a.a(entity.getCustomClass(), (Function<? super World, ? extends Entity>) entity.function);
             
-    		EntityTypes<?> entitytypes = a.a(customName);
-    		IRegistry.ENTITY_TYPE.a(new MinecraftKey(customName), entitytypes);
+    		typesLoc = a.a(customName.toLowerCase());
+    		IRegistry.ENTITY_TYPE.a(new MinecraftKey(customName.toLowerCase()), typesLoc);
     		//EntityTypes.a("zombie", a.a(entity.getCustomClass(), ::new));
         }
-            
+        //The get nms EnumCreatureType, and override and biome spawn list in which the default mob is contained and replacing it.
+        Field metaList = null;
+		try {
+			metaList = BiomeBase.class.getDeclaredField("aZ");
+		} catch (NoSuchFieldException | SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        metaList.setAccessible(true);
+        for (BiomeBase base : BiomeBase.aG) {
+            List<BiomeMeta> v = null;
+			try {
+				v = (List<BiomeMeta>) metaList.get(base);
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            for (BiomeMeta meta : v) {
+                    meta.b = (EntityTypes<? extends EntityInsentient>) typesLoc;
+                    break;
+            }
+        }
 
  
     }

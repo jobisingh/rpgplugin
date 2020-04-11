@@ -81,6 +81,8 @@ public class CombatManager extends AbstractManager {
             return false;
         boolean cancel = false;
         PlayerData pd=Pluginc.getPD(p);
+        if(pd == null) p.sendMessage("You Are Nulled Boi");
+        if(pd.rank == null) p.sendMessage("Your rank is null");
         if(pd.rank==Rank.BUILDER)
         	return cancel;
        if (!SpellManager.isCasting(p)) {
