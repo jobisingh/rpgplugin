@@ -18,7 +18,7 @@ public class GiveBadgeCommand extends AbstractCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
     }
-
+//
     @Override
     public void executePlayer(Player p, PlayerData pd, String[] args) {
         if (args.length != 2) {
