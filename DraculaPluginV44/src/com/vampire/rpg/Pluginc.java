@@ -17,6 +17,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.craftbukkit.v1_13_R2.CraftWorld;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
@@ -90,6 +91,7 @@ import com.vampire.rpg.trinkets.TrinketManager;
 import com.vampire.rpg.utils.VamScheduler;
 import com.vampire.rpg.utils.VamSerializer;
 import com.vampire.rpg.utils.VamTicks;
+import com.vampire.rpg.utils.entities.CustomBlaze;
 import com.vampire.rpg.warps.WarpManager;
 
 
@@ -135,10 +137,16 @@ public class Pluginc extends JavaPlugin{
 		// Entities that have a per-player name
 		//Table<UUID, String, String> entityName = HashBasedTable.create();
 	}
+	
+	public void onLoad() {
+		EntityRegistrar.registerEntities();
+	}
+	
 	public void onEnable(){
 		
 		instance=this;
 		PluginDescriptionFile pdfile = getDescription();
+		//new CustomBlaze( ((CraftWorld) Bukkit.getWorld("world")).getHandle()).register();;
 		/* host ="108.166.163.130";
 	     port = 3306;
 	     database = "mc36669";
@@ -267,7 +275,7 @@ public class Pluginc extends JavaPlugin{
 				
 			}
 		});
-		System.out.println(ChatColor.DARK_PURPLE+"Successfully loaded DRACULARPG.");
+		System.out.println(ChatColor.DARK_PURPLE+"Successfully loaded FallenGateCore.");
         VamScheduler.schedule(this, new Runnable() {
             public void run() {
                 for (World w : getServer().getWorlds()) {
@@ -351,7 +359,11 @@ public class Pluginc extends JavaPlugin{
 	//	CraftingManager.shutdown();
 	//	ManagerInstances.cleanup();
 		 try {
-	            EntityRegistrar.unregisterEntities();
+			 
+			 
+			 //BETTER FIX THIS TO REGISTER ENTITIES!
+			 
+	        //    EntityRegistrar.unregisterEntities();
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }

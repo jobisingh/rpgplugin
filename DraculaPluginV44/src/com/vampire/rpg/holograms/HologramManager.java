@@ -52,6 +52,8 @@ public class HologramManager extends AbstractManager {
          }
          holograms.clear();
     }
+    
+    //Toc create a hologram, make a text file in the hologram folder. Then inside use this format per hologram. Hologram Format: -888.00 66.00 482.00 WorldName &4Hello World
     public static void readHologram(File f) {
         Scanner scan = null;
         try {
@@ -61,6 +63,7 @@ public class HologramManager extends AbstractManager {
                 if (s.startsWith("//") || s.length() == 0)
                     continue;
                 try {
+                    
                     String[] data = s.split(" ");
                     double x = Double.parseDouble(data[0]);
                     double y = Double.parseDouble(data[1]);
@@ -78,7 +81,9 @@ public class HologramManager extends AbstractManager {
                     Hologram holo = new Hologram(ChatColor.translateAlternateColorCodes('&', sb.toString().trim()), loc);
                     holo.spawn();
                     register(holo);
+                    
                 } catch (Exception e) {
+                	
                     System.out.println("Error reading hologram on line " + s + " in file " + f);
                 }
             }

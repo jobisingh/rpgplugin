@@ -348,7 +348,7 @@ public class ChatManager extends AbstractManager {
 
         // Check mentions
         ArrayList<String> finalMentioned = new ArrayList<String>();
-        if (pd.check(Rank.MOD) && (message.contains("@everyone"))) {
+        if (pd.check(Rank.GUIDE) && (message.contains("@everyone"))) {
             for (Player p : plugin.getServer().getOnlinePlayers()) {
                 VamSound.playSound(p, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
                 p.sendMessage(ChatColor.GRAY + "> " + event.getPlayer().getName() + " just mentioned everyone.");

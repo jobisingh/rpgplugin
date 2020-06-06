@@ -12,7 +12,7 @@ public class BlockBreak implements Listener {
 	public void onBlockBreak(BlockBreakEvent e){
 		if(e.getBlock().getType().equals(Material.BONE_BLOCK)){
 			Player p=e.getPlayer();
-			p.sendMessage(ChatColor.DARK_AQUA+"You cannot break bone blocks, those are Drakona's Markers");
+			p.sendMessage(ChatColor.DARK_AQUA+"You cannot break bone blocks, those are Fallen Gate's Markers");
 			e.setCancelled(true);
 			
 		}

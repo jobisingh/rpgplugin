@@ -1,6 +1,6 @@
 main: com.vampire.rpg.Pluginc
 version: 0.4
-name: Dracula_RPG
+name: FallenGateCore
 depend: [ProtocolLib]
 api-version: 1.13
 

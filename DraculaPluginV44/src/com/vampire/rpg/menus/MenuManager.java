@@ -96,7 +96,7 @@ public class MenuManager extends AbstractManager {
                 ((Player) event.getWhoClicked()).updateInventory();
                 ItemStack item = event.getCurrentItem();
                 String serialized = serializeForMenu(item);
-                             //  System.out.println("checking " + invs.get(invName) + " for " + serialized);
+                               System.out.println("checking " + invs.get(invName) + " for " + serialized);
                 if (invs.get(invName).containsKey(serialized)) {
                     Runnable r = invs.get(invName).get(serialized);
                     r.run();
@@ -189,8 +189,10 @@ public class MenuManager extends AbstractManager {
             item.setItemMeta(im);
             inventory.setItem(slot, item);
             Runnable r = mi.runnable;
-            if (r != null)
+            if (r != null) {
                 MenuManager.registerListener(p, item, inventory, r);
+            }
+
         }
         return inventory;
     }
@@ -234,8 +236,10 @@ public class MenuManager extends AbstractManager {
             item.setItemMeta(im);
             inventory.setItem(slot, item);
             Runnable r = (Runnable) data[5];
-            if (r != null)
+            if (r != null) {
                 MenuManager.registerListener(p, item, inventory, r);
+            }
+
         }
         return inventory;
     }

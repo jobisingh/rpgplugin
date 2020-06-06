@@ -34,7 +34,7 @@ public class Minefield extends SpellEffect {
         Location loc = p.getLocation().add(0, p.getEyeHeight() * 0.8, 0);
         loc.add(p.getLocation().getDirection().normalize().multiply(0.4));
         for (int count = 0; count < amount; count++) {
-            final Item item = p.getWorld().dropItem(loc, new ItemStack(Material.LEGACY_FIREWORK_CHARGE));
+            final Item item = p.getWorld().dropItem(loc, new ItemStack(Material.FIREWORK_STAR));
             item.setMetadata(VamMetadata.META_NO_PICKUP, new FixedMetadataValue(Spell.plugin, 0));
             //            ItemManager.attachLabel(item, ChatColor.BOLD + "= " + p.getName() + "'s Mine =");
             Spell.plugin.getInstance(DropManager.class).attachLabel(item, ChatColor.DARK_GRAY.toString() + ChatColor.ITALIC + p.getName());

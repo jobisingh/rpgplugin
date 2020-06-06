@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -115,10 +116,12 @@ public class ItemManager extends AbstractManager {
     private static void readItem(File f) {
         try {
             String itemIdentifier = f.getName();
+            
             if (!itemIdentifier.contains("_"))
                 throw new Exception("Item type not identified (" + itemIdentifier + ").");
             boolean equip = itemIdentifier.substring(0, itemIdentifier.indexOf("_")).equalsIgnoreCase("equip");
             itemIdentifier = itemIdentifier.substring(itemIdentifier.indexOf("_") + 1, itemIdentifier.indexOf(".txt"));
+            Bukkit.getLogger().info("Identifier: " +  itemIdentifier);
             //            System.out.println("Item name: " + itemIdentifier + " | Equip? " + equip);
             Scanner scan = new Scanner(f);
             String itemDisplayName = ChatColor.translateAlternateColorCodes('&', scan.nextLine().trim());
@@ -127,6 +130,7 @@ public class ItemManager extends AbstractManager {
                 itemDisplayName = itemDisplayName.substring(0, itemDisplayName.indexOf("#SOULBOUND")).trim();
                 soulbound = true;
             }
+
             String description = scan.nextLine().trim();
             if (equip) {
                 String s = scan.nextLine().trim().toUpperCase();
@@ -136,6 +140,7 @@ public class ItemManager extends AbstractManager {
                     s = data[0];
                     leatherColor = Color.fromRGB(Integer.parseInt(data[1]), Integer.parseInt(data[2]), Integer.parseInt(data[3]));
                 }
+                
                 Material m = null;
                 try {
                     m = Material.getMaterial(s);
@@ -165,6 +170,7 @@ public class ItemManager extends AbstractManager {
                 itemIdentifierToRPGItemMap.put(item.identifier, item);
               //  System.out.println(ChatColor.DARK_GREEN+"loaded "+item.name+"  "+item.identifier);
             } else {
+            	
                 String s = scan.nextLine().trim().toUpperCase();
                 Material m = Material.getMaterial(s);
                 if (m == null)
@@ -178,7 +184,8 @@ public class ItemManager extends AbstractManager {
 
                 itemNameToIdentifierMap.put(item.name, item.identifier);
                 itemIdentifierToRPGItemMap.put(item.identifier, item);
-              //  System.out.println(ChatColor.DARK_GREEN+"loaded "+item.name+"  "+item.identifier);
+                
+                System.out.println(ChatColor.DARK_GREEN+"loaded "+item.name+"  "+item.identifier);
             }
             scan.close();
         } catch (Exception e) {

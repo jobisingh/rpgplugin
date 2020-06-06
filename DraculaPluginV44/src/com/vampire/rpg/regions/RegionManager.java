@@ -4,11 +4,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import org.bukkit.Location;
 import org.bukkit.WeatherType;
 import org.bukkit.World;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,6 +22,7 @@ import com.vampire.rpg.AbstractManager;
 import com.vampire.rpg.PlayerData;
 import com.vampire.rpg.Pluginc;
 import com.vampire.rpg.options.Option;
+import com.vampire.rpg.regions.areas.AreasConfig;
 import com.vampire.rpg.regions.areas.TriggerArea;
 import com.vampire.rpg.regions.areas.TriggerAreaAction;
 import com.vampire.rpg.regions.areas.actions.TriggerAreaActionDelay;
@@ -68,9 +71,13 @@ public class RegionManager extends AbstractManager implements Listener{
         File dir = new File(plugin.getDataFolder(), "regions");
         if (!dir.exists())
             dir.mkdirs();
+        
+        if(dir.listFiles().length == 0)
+        	RegionsConfig.createConfig();
+        
         for (File f : dir.listFiles()) {
-            if (f.getName().endsWith(".txt")) {
-                readRegion(f);
+            if (f.getName().endsWith(".yml")) {
+                readRegion(YamlConfiguration.loadConfiguration(f));
             }
         }
         System.out.println("Loaded " + regions.size() + " regions.");
@@ -78,14 +85,75 @@ public class RegionManager extends AbstractManager implements Listener{
         dir = new File(plugin.getDataFolder(), "areas");
         if (!dir.exists())
             dir.mkdirs();
+        
+        if(dir.listFiles().length == 0)
+        	AreasConfig.createConfig();
+        
         for (File f : dir.listFiles()) {
-            if (f.getName().endsWith(".txt")) {
-                readArea(f);
+            if (f.getName().endsWith(".yml")) {
+                readArea(YamlConfiguration.loadConfiguration(f));
             }
         }
      //   System.out.println("Loaded " + areas.size() + " trigger areas.");
     }
 
+    public static void readArea(YamlConfiguration file) {
+    	try {
+		ArrayList<RegionPoint> points = new ArrayList<RegionPoint>();
+    	World world = null;
+		ArrayList<TriggerAreaAction> actions = new ArrayList<TriggerAreaAction>();
+        long delay = 0;
+        String areaName = "";
+    	
+    	for(Entry<String, Object> entry : file.getConfigurationSection("Area Info").getValues(false).entrySet()) {
+    		
+    		String section = entry.getKey();
+    		Object value = entry.getValue();
+        
+			if(section.contains("World")) {
+				plugin.getServer().getWorld(file.getString("Area Info."+section));
+				continue;
+			}
+			
+    		if(section.contains("Location")) {
+    			
+    			int x = file.getInt("Area Info."+section+".X");
+    			int y = file.getInt("Area Info."+section+".Y");
+    			int z = file.getInt("Area Info."+section+".Z");
+    			
+    			points.add(new RegionPoint(x, y, z));
+    			continue;
+    		}
+    		
+            if (world == null)
+                throw new Exception("Invalid world");
+            
+            if(section.contains("Triggered Area Action")) {
+                TriggerAreaAction taa = TriggerAreaAction.parse(file.getString("Area Info."+section));
+                if (taa == null)
+                    continue;
+                if (taa instanceof TriggerAreaActionDelay) {
+                    delay = ((TriggerAreaActionDelay) taa).delay;
+                    continue;
+                }
+                actions.add(taa);
+            }
+            
+            areaName = file.getName().substring(0, file.getName().indexOf(".yml"));
+            if (areaName.contains("."))
+                areaName = areaName.substring(0, areaName.lastIndexOf("."));
+            
+            TriggerArea ta = new TriggerArea(areaName, world, delay, points, actions);
+            areas.add(ta);
+    		
+    	}}
+    	catch(Exception e) {
+            System.out.println("Error reading area " + file.getName());
+    		e.printStackTrace();
+    	}
+    	
+    }
+    /*
     public static void readArea(File f) {
         try (Scanner scan = new Scanner(f)) {
             World w = plugin.getServer().getWorld(scan.nextLine().trim());
@@ -128,7 +196,69 @@ public class RegionManager extends AbstractManager implements Listener{
             e.printStackTrace();
         }
     }
-
+*/
+    public static void readRegion(YamlConfiguration file) {
+    	
+        ArrayList<RegionPoint> points = new ArrayList<RegionPoint>();
+        int recommendedLevel = 0;
+        int dangerLevel = 0;
+        World world = null;
+        String regionName;
+        
+    	for(Entry<String, Object> entry : file.getConfigurationSection("Region Info").getValues(false).entrySet()) {
+    		
+    		String section = entry.getKey();
+    		Object value = entry.getValue();
+    		
+    		if(section.contains("Location")) {
+    			
+    			int x = file.getInt("Region Info."+section+".X");
+    			int y = file.getInt("Region Info."+section+".Y");
+    			int z = file.getInt("Region Info."+section+".Z");
+    			
+    			points.add(new RegionPoint(x, y, z));
+    			continue;
+    		}
+    		
+    		if(section.contains("Recommended Level")) {
+    			recommendedLevel = file.getInt("Region Info."+section);
+    			continue;
+    		}
+    		
+    		if(section.contains("Danger Level")) {
+    			dangerLevel = file.getInt("Region Info."+section);
+    			continue;
+    		}
+    		
+    		if(section.contains("World")) {
+    			plugin.getServer().getWorld(file.getString("Region Info."+section));
+    			continue;
+    		}
+    		
+            if (world == null)
+                continue;
+            
+            regionName = file.getName().substring(0, file.getName().indexOf(".yml"));
+            if (regionName.contains("."))
+                regionName = regionName.substring(0, regionName.lastIndexOf("."));
+            
+            Region r = new Region(regionName, recommendedLevel, dangerLevel, world, points);
+            
+    		if(section.contains("Extra Info")) {
+    			
+    			r.startTime = file.getInt("Extra Info."+section+".Start Time");
+    			r.endTime = file.getInt("Extra Info."+section+".End Time");
+                r.timeDiff = r.endTime - r.startTime;
+                r.cycleLengthSeconds = file.getInt("Extra Info."+section+".Cycle Length");
+                regions.add(r);
+    			break;
+    		}
+    		
+    	}
+    	
+    }
+    
+    /*
     public static void readRegion(File f) {
         try (Scanner scan = new Scanner(f)) {
             ArrayList<RegionPoint> points = new ArrayList<RegionPoint>();
@@ -162,7 +292,8 @@ public class RegionManager extends AbstractManager implements Listener{
             e.printStackTrace();
         }
     }
-
+    */
+    
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         if (event.getFrom().getBlock().equals(event.getTo().getBlock()))

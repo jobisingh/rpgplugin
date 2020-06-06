@@ -222,7 +222,7 @@ public class MobType {
                 item = item.clone();
                 item.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
             }
-            if (s.endsWith("_HELMET") || item.getType() == Material.LEGACY_SKULL_ITEM)
+            if (s.endsWith("_HELMET") || item.getType() == Material.PLAYER_HEAD)
                 ee.setHelmet(item);
             else if (s.endsWith("_CHESTPLATE"))
                 ee.setChestplate(item);

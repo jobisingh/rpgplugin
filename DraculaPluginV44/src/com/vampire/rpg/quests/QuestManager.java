@@ -82,7 +82,7 @@ public class QuestManager extends AbstractManager {
                     current = q.parts.get(0).desc;
                 } else if (currProg < q.parts.size() - 1) {
                     current = q.parts.get(currProg).desc;
-                    m = Material.LEGACY_BOOK_AND_QUILL;
+                    m = Material.WRITABLE_BOOK;
                 } else {
                     current = "Quest Complete!";//q.parts.get(q.parts.size() - 1).desc;
                     m = Material.BOOK;
@@ -110,7 +110,7 @@ public class QuestManager extends AbstractManager {
                     reqQuests.add(ChatColor.GRAY + "- None");
                 }
                 if (!questAvailable)
-                    m = Material.LEGACY_EMPTY_MAP;
+                    m = Material.MAP;
                 ArrayList<Object> list = new ArrayList<Object>();
                 list.add(ChatColor.DARK_AQUA);
                 list.add(q.desc);

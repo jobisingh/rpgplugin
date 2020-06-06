@@ -275,7 +275,7 @@ public class PlayerData {
 		 RegionManager.checkRegion(getPlayer());
 		 updateHealthManaDisplay();
 		 updateEquipment();
-		VamMessages.sendTabTitle(getPlayer(), ChatColor.RED+"Drakona Dev Server", ChatColor.BLUE+"Play now on "+ChatColor.GRAY+ "(put ip here)");		
+		VamMessages.sendTabTitle(getPlayer(), ChatColor.RED+"Fallen Gate Dev Server", ChatColor.BLUE+"Play now on "+ChatColor.GRAY+ "(put ip here)");		
 		// VamMessages.handleTab(getPlayer(), "TapL");
 		//PacketPlayOutPlayerInfo packet= new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.);
 		/* PlayerList list = new PlayerList(getPlayer(),0);

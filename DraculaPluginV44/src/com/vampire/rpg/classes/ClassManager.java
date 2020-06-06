@@ -4,6 +4,7 @@ package com.vampire.rpg.classes;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -58,6 +59,7 @@ public class ClassManager extends AbstractManager {
             p.sendMessage("");
             p.sendMessage(ChatColor.GRAY + "> " + ChatColor.GREEN + "It looks like this is your first time choosing a class!");
             p.sendMessage(ChatColor.GRAY + "> " + ChatColor.GREEN + "Here is a beginner weapon to help you get started.");
+
             p.getInventory().addItem(ItemManager.itemIdentifierToRPGItemMap.get(weaponName).generate());
         } else {
             //            if (pd.level >= 15) {
@@ -95,7 +97,9 @@ public class ClassManager extends AbstractManager {
             pd.clearBuffs();
             pd.classType = classType;
             p.sendMessage(ChatColor.GREEN + "You are now a " + className + "!");
+            p.getInventory().addItem(ItemManager.itemIdentifierToRPGItemMap.get(weaponName).generate());
             p.closeInventory();
+            
         }
     }
 
@@ -105,10 +109,10 @@ public class ClassManager extends AbstractManager {
             p.sendMessage(ChatColor.GRAY + "> " + ChatColor.AQUA + "Please use " + ChatColor.YELLOW + ChatColor.BOLD + "/class" + ChatColor.AQUA + " again once you get out of here!");
             return;
         }*/
-        Inventory i = MenuManager.createMenu(p, "Drakona Classes", 1, new Object[][] {
+        Inventory i = MenuManager.createMenu(p, "Fallen Gate Classes", 1, new Object[][] {
                 { 0, 0, Material.BOOK, ChatColor.GREEN + "About Classes", new Object[] {
                         ChatColor.WHITE,
-                        "Everyone in Drakona can choose a class!",
+                        "Everyone in Fallen Gate can choose a class!",
                         ChatColor.WHITE,
                         "Classes have their own spells and use a specific weapon type to cast their spells.",
                         ChatColor.WHITE,
@@ -357,7 +361,7 @@ public class ClassManager extends AbstractManager {
                 { 
                         0,
                         0,
-                        Material.LEGACY_BOOK_AND_QUILL,
+                        Material.WRITABLE_BOOK,
                         ChatColor.AQUA + "Spellcast 1 " + ChatColor.YELLOW + "-" + ChatColor.GOLD + " RLL",
                         new Object[] {
                                 ChatColor.GREEN,
@@ -373,13 +377,14 @@ public class ClassManager extends AbstractManager {
                         new Runnable() {
                             public void run() {
                                 showSpellcastChoices(Spellcast.RLL, p, pd, villager);
+                                
                             }
                         }
                 },
                 {
                         0,
                         1,
-                        Material.LEGACY_BOOK_AND_QUILL,
+                        Material.WRITABLE_BOOK,
                         ChatColor.AQUA + "Spellcast 2 " + ChatColor.YELLOW + "-" + ChatColor.GOLD + " RLR",
                         new Object[] {
                                 ChatColor.GREEN,
@@ -401,7 +406,7 @@ public class ClassManager extends AbstractManager {
                 {
                         0,
                         2,
-                        Material.LEGACY_BOOK_AND_QUILL,
+                        Material.WRITABLE_BOOK,
                         ChatColor.AQUA + "Spellcast 3 " + ChatColor.YELLOW + "-" + ChatColor.GOLD + " RRL",
                         new Object[] {
                                 ChatColor.GREEN,
@@ -423,7 +428,7 @@ public class ClassManager extends AbstractManager {
                 {
                         0,
                         3,
-                        Material.LEGACY_BOOK_AND_QUILL,
+                        Material.WRITABLE_BOOK,
                         ChatColor.AQUA + "Spellcast 4 " + ChatColor.YELLOW + "-" + ChatColor.GOLD + " RRR",
                         new Object[] {
                                 ChatColor.GREEN,
@@ -706,7 +711,7 @@ public class ClassManager extends AbstractManager {
                 o[2] = Material.PAPER;
                 o[3] = ChatColor.GREEN + s.name + ChatColor.GRAY + " - " + ChatColor.DARK_AQUA + "Passive";
             } else {
-                o[2] = Material.LEGACY_EMPTY_MAP;
+                o[2] = Material.MAP;
                 o[3] = ChatColor.DARK_RED + s.name + ChatColor.GRAY + " - " + ChatColor.DARK_AQUA + "Passive";
             }
         } else {
@@ -717,7 +722,7 @@ public class ClassManager extends AbstractManager {
                     o[2] = Material.SNOWBALL;
                 o[3] = ChatColor.GREEN + s.name + ChatColor.GRAY + " - " + ChatColor.DARK_AQUA + s.manaCost + " Mana";
             } else {
-                o[2] = Material.LEGACY_FIREWORK_CHARGE;
+                o[2] = Material.FIREWORK_STAR;
                 o[3] = ChatColor.DARK_RED + s.name + ChatColor.GRAY + " - " + ChatColor.DARK_AQUA + s.manaCost + " Mana";
             }
         }

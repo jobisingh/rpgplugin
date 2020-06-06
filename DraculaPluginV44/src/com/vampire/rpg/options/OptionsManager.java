@@ -31,7 +31,7 @@ public class OptionsManager extends AbstractManager {
     }
 
     public static void openMenu(Player p, PlayerData pd) {
-        Inventory inventory1 = MenuManager.createMenu(p, "Drakona Game Options", 6, new Object[][] {});
+        Inventory inventory1 = MenuManager.createMenu(p, "Fallen Gate Game Options", 6, new Object[][] {});
         MenuManager.modifyMenu(p, inventory1, new Object[][]{
   		  {0,0,Material.SIGN,"Chat Options",new Object[]{
   				  

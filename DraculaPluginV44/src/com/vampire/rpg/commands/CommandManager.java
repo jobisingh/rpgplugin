@@ -27,6 +27,7 @@ import com.vampire.rpg.commands.member.RollCommand;
 import com.vampire.rpg.commands.member.SalvageCommand;
 import com.vampire.rpg.commands.member.ShardCommand;
 import com.vampire.rpg.commands.member.SpellCommand;
+import com.vampire.rpg.commands.member.TeleportAcceptCommand;
 import com.vampire.rpg.commands.member.TradeCommand;
 import com.vampire.rpg.commands.member.TrinketCommand;
 import com.vampire.rpg.commands.member.WhisperCommand;
@@ -83,7 +84,7 @@ public class CommandManager extends AbstractManager {
         AbstractCommand.plugin = plugin;
         // Member
         register(Rank.MEMBER,new PingCommand("ping","pingme","pingo"));
-        register(Rank.MEMBER,new MenuCommand("rpgmenu"));
+        //register(Rank.MEMBER,new MenuCommand("rpgmenu"));
         register(Rank.MEMBER, new BankCommand("bank"));
         register(Rank.MEMBER, new ClassCommand("class", "classes"));
         register(Rank.MEMBER, new IgnoreCommand("ignore"));
@@ -99,6 +100,7 @@ public class CommandManager extends AbstractManager {
         register(Rank.MEMBER, new SpellCommand("spell", "spells", "magic", "sp", "spl", "spls"));
         register(Rank.MEMBER, new PartyCommand("party", "p"));
         register(Rank.MEMBER, new TrinketCommand("trinket", "t"));
+        register(Rank.MEMBER, new TeleportAcceptCommand("tpa"));
         //Owner
         
         //Reload commands

@@ -16,8 +16,9 @@ public enum Rank {
     HELPER(6, "Helper", "Helper", ChatColor.AQUA, ChatColor.WHITE,new String[]{}),
     GAMEMASTER(7, "GM", "Gamemaster", ChatColor.BLUE, ChatColor.WHITE,new String[]{}),
     BUILDER(8, "Builder", "Builder", ChatColor.DARK_AQUA, ChatColor.WHITE,new String[]{"worldedit.*","voxelsniper.*","voxelsniper.sniper","voxelsniper.brush.*","voxelsniper.command.*","bukkit.command.gamemode","bukkit.command.effect","minecraft.command.effect","minecraft.command.gamemode","essentials.fly","essentials.hat","multiverse.teleport.self.NAME","mv.bypass.gamemode.*"}),
-    MOD(9, "Mod", "Moderator", ChatColor.LIGHT_PURPLE, ChatColor.WHITE,new String[]{}),
+    GUIDE(9, "Guide", "Guide", ChatColor.LIGHT_PURPLE, ChatColor.WHITE,new String[]{}),
     ADMIN(10, "Admin", "Administrator", ChatColor.DARK_RED, ChatColor.WHITE,new String[]{}),
+    DEVELOPER(10, "Dev", "Developer", ChatColor.DARK_GREEN, ChatColor.WHITE,new String[]{}),
     OWNER(11, "Owner", "Owner", ChatColor.DARK_PURPLE, ChatColor.WHITE,new String[]{"worldedit.*","voxelsniper.*","voxelsniper.sniper","voxelsniper.brush.*","voxelsniper.command.*","bukkit.command.gamemode","bukkit.command.effect","minecraft.command.effect","minecraft.command.gamemode","essentials.fly","essentials.hat","multiverse.teleport.self.NAME","mv.bypass.gamemode.*"});
 	public final int power;
 	public final String chatPrefix, rankDisplayName;

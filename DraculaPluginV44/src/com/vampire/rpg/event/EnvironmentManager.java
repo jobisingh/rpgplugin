@@ -524,7 +524,6 @@ public class EnvironmentManager extends AbstractManager {
         if (event.getCause() == RemoveCause.DEFAULT || event.getCause() == RemoveCause.EXPLOSION)
             event.setCancelled(true);
     }
-
     @EventHandler
     public void onBucketEmpty(PlayerBucketEmptyEvent event) {
         PlayerData pd = plugin.getPD(event.getPlayer());
@@ -536,7 +535,6 @@ public class EnvironmentManager extends AbstractManager {
             event.setCancelled(true);
         event.getPlayer().updateInventory();
     }
-
     @EventHandler
     public void onBucketFill(PlayerBucketFillEvent event) {
         PlayerData pd = plugin.getPD(event.getPlayer());
@@ -548,7 +546,6 @@ public class EnvironmentManager extends AbstractManager {
             event.setCancelled(true);
         event.getPlayer().updateInventory();
     }
-
     @EventHandler
     public void onHangingBreak(HangingBreakByEntityEvent event) {
         if (!(event.getRemover() instanceof Player))
@@ -561,7 +558,6 @@ public class EnvironmentManager extends AbstractManager {
         if (!canBuild(pd))
             event.setCancelled(true);
     }
-
     @EventHandler
     public void onHangingPlace(HangingPlaceEvent event) {
         PlayerData pd = plugin.getPD(event.getPlayer());
@@ -573,7 +569,6 @@ public class EnvironmentManager extends AbstractManager {
             event.setCancelled(true);
         event.getPlayer().updateInventory();
     }
-
     @EventHandler
     public void onItemFrameInteract(PlayerInteractEntityEvent event) {
         Player p = event.getPlayer();
@@ -582,22 +577,18 @@ public class EnvironmentManager extends AbstractManager {
             event.setCancelled(true);
         }
     }
-
     @EventHandler
     public void onBlockGrow(BlockGrowEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onStructureGrow(StructureGrowEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onPlayerArmorStandManipulate(PlayerArmorStandManipulateEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent event) {
         event.setCancelled(true);
@@ -608,7 +599,6 @@ public class EnvironmentManager extends AbstractManager {
         if (!event.getBlock().getWorld().getName().equals("flat") && !event.getBlock().getWorld().getName().contains("main") && !event.getBlock().getWorld().getName().equalsIgnoreCase(SakiRPG.GAME_WORLD))
             event.setCancelled(true);
     }
-
     @EventHandler
     public void onWeatherChange(WeatherChangeEvent event) {
         event.getWorld().setThunderDuration(0);
@@ -616,7 +606,6 @@ public class EnvironmentManager extends AbstractManager {
         event.getWorld().setThundering(false);
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent event) {
         if (event.getSpawnReason() != SpawnReason.CUSTOM) {
@@ -624,23 +613,19 @@ public class EnvironmentManager extends AbstractManager {
             event.getEntity().remove();
         }
     }
-
     @EventHandler
     public void onExpGain(PlayerExpChangeEvent event) {
         event.setAmount(0);
     }
-
     @EventHandler
     public void onRegainHealth(EntityRegainHealthEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onEntityCombust(EntityCombustEvent event) {
         event.getEntity().setFireTicks(0);
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onItemDamage(EntityDamageEvent event) {
         if (event.getEntityType() == EntityType.DROPPED_ITEM && (event.getCause() == DamageCause.LAVA || event.getCause() == DamageCause.FIRE_TICK || event.getCause() == DamageCause.FIRE)) {
@@ -667,7 +652,6 @@ public class EnvironmentManager extends AbstractManager {
             event.setCancelled(true);
         }
     }
-
     @EventHandler
     public void onPlayerInteractCrops(PlayerInteractEvent event) {
         if (event.getAction() == Action.PHYSICAL) {
@@ -682,17 +666,14 @@ public class EnvironmentManager extends AbstractManager {
             }
         }
     }
-
     @EventHandler
     public void hungerDecay(FoodLevelChangeEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onThunderChange(ThunderChangeEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onWorldLoad(WorldLoadEvent event) {
         World w = event.getWorld();
@@ -701,22 +682,18 @@ public class EnvironmentManager extends AbstractManager {
         if (w.isThundering())
             w.setThundering(false);
     }
-
     @EventHandler
     public void onSlimeSplit(SlimeSplitEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onBlockIgnite(BlockIgniteEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onChunkLoad(final ChunkLoadEvent event) {
         if (event.getWorld().getName().contains(SakiRPG.GAME_WORLD) && event.isNewChunk()) {
@@ -725,7 +702,6 @@ public class EnvironmentManager extends AbstractManager {
             handleChunk(event.getChunk());
         }
     }
-
     public static void handleChunk(Chunk chunk) {
         RScheduler.schedule(plugin, new Runnable() {
             public void run() {
@@ -734,12 +710,10 @@ public class EnvironmentManager extends AbstractManager {
             }
         }, 10);
     }
-
     @EventHandler
     public void onChunkUnload(ChunkUnloadEvent event) {
         despawnEntities(event.getChunk().getEntities());
     }
-
     public static void despawnEntities(Entity[] list) {
         for (Entity e : list) {
             if (e == null || e.getUniqueId() == null)
@@ -768,29 +742,23 @@ public class EnvironmentManager extends AbstractManager {
                 ex.printStackTrace();
             }
         }
-
     }
-
     @EventHandler
     public void onBlockFade(BlockFadeEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onBlockSpread(BlockSpreadEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onBlockForm(BlockFormEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onLeafDecay(LeavesDecayEvent event) {
         event.setCancelled(true);
     }
-
     private static final Material[] RESTRICTED_TYPES = {
             Material.ANVIL,
             Material.ENCHANTMENT_TABLE,
@@ -806,12 +774,10 @@ public class EnvironmentManager extends AbstractManager {
             Material.CHEST,
             Material.ENDER_CHEST
     };
-
     @EventHandler
     public void onHopper(InventoryPickupItemEvent event) {
         event.setCancelled(true);
     }
-
     @EventHandler
     public void onAnvilOrEnchantInteract(PlayerInteractEvent event) {
         if (event.getClickedBlock() != null) {
@@ -826,9 +792,7 @@ public class EnvironmentManager extends AbstractManager {
             }
         }
     }
-
     private HashMap<String, Long> lastVoid = new HashMap<String, Long>();
-
     @EventHandler
     public void onEntityDamageEvent(EntityDamageEvent event) {
         if (event.getCause() == DamageCause.VOID && event.getEntity() instanceof Player) {
@@ -843,7 +807,6 @@ public class EnvironmentManager extends AbstractManager {
             event.getEntity().teleport(md.ai.originalLoc);
         }
     }
-
     @EventHandler
     public void onItemSpawn(ItemSpawnEvent e) {
         if (e.getEntity().getItemStack().getType() == Material.EGG) {

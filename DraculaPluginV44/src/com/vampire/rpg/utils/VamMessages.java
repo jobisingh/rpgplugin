@@ -14,6 +14,8 @@ import org.bukkit.entity.Player;
 import com.mojang.authlib.GameProfile;
 import com.vampire.rpg.Pluginc;
 
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.server.v1_13_R2.ChatComponentText;
 import net.minecraft.server.v1_13_R2.DimensionManager;
 import net.minecraft.server.v1_13_R2.EntityPlayer;
@@ -102,9 +104,12 @@ public class VamMessages {
     }
 
     public static void sendActionBar(Player p, String msg) {
-        IChatBaseComponent cbc = ChatSerializer.a("{\"text\": \"" + msg + "\"}");
-        PacketPlayOutChat ppoc = new PacketPlayOutChat(cbc);
-        ((CraftPlayer) p).getHandle().playerConnection.sendPacket(ppoc);
+    	
+    	p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(msg));
+    	
+       // IChatBaseComponent cbc = ChatSerializer.a("{\"text\": \"" + msg + "\"}");
+       // PacketPlayOutChat ppoc = new PacketPlayOutChat(cbc);
+       // ((CraftPlayer) p).getHandle().playerConnection.sendPacket(ppoc);
     }
 
     public static void sendTitle(Player player, String title, String subtitle, int fadeIn, int stay, int fadeOut) {
@@ -168,19 +173,17 @@ public class VamMessages {
     }
 
     public static void sendTabTitle(Player player, String header, String footer) {
-        if (header == null) {
+        if (header == null) 
             header = "";
-        }
         header = ChatColor.translateAlternateColorCodes('&', header);
-        if (footer == null) {
+        if (footer == null) 
             footer = "";
-        }
         footer = ChatColor.translateAlternateColorCodes('&', footer);
         header = header.replaceAll("%player%", player.getDisplayName());
         footer = footer.replaceAll("%player%", player.getDisplayName());
         try {
-        	IChatBaseComponent tabHeader = ChatSerializer.b(header);
-        	Object tabFooter = ChatSerializer.b(footer);
+        	IChatBaseComponent tabHeader = ChatSerializer.a("{\"text\":\"" + header + "\"}");
+        	Object tabFooter = ChatSerializer.a("{\"text\":\"" + footer + "\"}");
             //Object tabHeader = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", new Class[] { String.class }).invoke(null, new Object[] {
            //         "{\"text\":\"" + header + "\"}" });
            // Object tabFooter = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", new Class[] { String.class }).invoke(null, new Object[] {

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -199,10 +200,11 @@ public class SpellManager extends AbstractManager {
                 weapon = "a Mace";
                 break;
             case ASSASSIN:
+            	Bukkit.getLogger().info("Hi");
                 if (EquipType.DAGGER.isType(item))
                     rightWep = true;
                 className = "an Assassin";
-                weapon = "a Dagger";
+                weapon = "beginner_dagger";
                 break;
             case ALCHEMIST:
                 if (EquipType.ELIXIR.isType(item))

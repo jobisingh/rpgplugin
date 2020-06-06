@@ -137,6 +137,10 @@ public enum EntityRegistrar {
     public Class<? extends EntityInsentient> getCustomClass() {
         return customClass;
     }
+    
+    public Function<? super World, ? extends Entity> getFunction() {
+    	return function;
+    }
 
     /**
      * Register our entities.
@@ -196,6 +200,10 @@ public enum EntityRegistrar {
     */
     public static EntityTypes<?> typesLoc;
     public static void registerEntities() {
+    	
+
+    	
+    	
 
         for (EntityRegistrar entity : values()) {
         	
@@ -204,13 +212,14 @@ public enum EntityRegistrar {
             @SuppressWarnings("unchecked")
         	Map<Object, Type<?>> types = (Map<Object, Type<?>>) DataConverterRegistry.a().getSchema(15190).findChoiceType(DataConverterTypes.ENTITY).types();
             
-            types.put("minecraft:" + customName.toLowerCase(), types.get("minecraft:" + entity.getName().toString().toLowerCase()));
+            types.put("minecraft:" + "custom" +entity.getName().toString().toLowerCase(), types.get("minecraft:" + entity.getName().toString().toLowerCase()));
             EntityTypes.a<Entity> a = EntityTypes.a.a(entity.getCustomClass(), (Function<? super World, ? extends Entity>) entity.function);
             
-    		typesLoc = a.a(customName.toLowerCase());
-    		IRegistry.ENTITY_TYPE.a(new MinecraftKey(customName.toLowerCase()), typesLoc);
-    		//EntityTypes.a("zombie", a.a(entity.getCustomClass(), ::new));
+    		typesLoc = a.a("custom" + customName.toLowerCase());
+    		IRegistry.ENTITY_TYPE.a(new MinecraftKey("custom" + customName.toLowerCase()), typesLoc);
+    		//EntityTypes.a("customName, a.a(entity.getCustomClass(), entity.getFunction()));
         }
+        /*
         //The get nms EnumCreatureType, and override and biome spawn list in which the default mob is contained and replacing it.
         Field metaList = null;
 		try {
@@ -234,7 +243,7 @@ public enum EntityRegistrar {
             }
         }
 
- 
+        */
     }
 
     /**

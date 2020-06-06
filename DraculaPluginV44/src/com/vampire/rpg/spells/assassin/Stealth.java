@@ -39,7 +39,7 @@ public class Stealth extends SpellEffect {
                 durationSeconds = 60;
                 break;
         }
-    //    pd.giveStealth(durationSeconds);
+        pd.giveStealth(durationSeconds);
         Spell.notify(p, "You are now stealthed.");
         return true;
     }

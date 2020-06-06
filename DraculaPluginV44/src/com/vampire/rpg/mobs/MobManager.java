@@ -155,7 +155,7 @@ public class MobManager extends AbstractManager {
                 if (!s.equalsIgnoreCase("none")) {
                     if (s.startsWith("HEAD")) {
                         String[] temp = s.split(":");
-                        ItemStack skull = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (byte) 3);
+                        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1, (byte) 3);
                         SkullMeta meta = (SkullMeta) skull.getItemMeta();
                         meta.setOwner(temp[1]);
                         skull.setItemMeta(meta);

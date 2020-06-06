@@ -178,7 +178,7 @@ public class CraftedAPI {
 		fa.add(ChatColor.WHITE+"If you have all the ingredients,");
 		fa.add(ChatColor.WHITE+"you can "+ChatColor.BOLD+"click the item"+ChatColor.RESET+ChatColor.WHITE+ " and");
 		fa.add(ChatColor.WHITE+"you'll see the full stats of the item");
-		crafting.setItem(45, ItemAPI.AdLoreItem(new ItemStack(Material.LEGACY_BOOK_AND_QUILL), ChatColor.BLUE+"What's this?", fa, true, false));
+		crafting.setItem(45, ItemAPI.AdLoreItem(new ItemStack(Material.WRITABLE_BOOK), ChatColor.BLUE+"What's this?", fa, true, false));
 		//crafting.setItem(36, new ItemStack(Material.STAINED_GLASS_PANE,1,(short)14));
 		//crafting.setItem(36, new ItemStack(Material.STAINED_GLASS_PANE,1,(short)14));
 	
@@ -307,19 +307,19 @@ public class CraftedAPI {
 		as.allCraftedItems.add(new CraftedItem(ItemAPI.LoreItem(new ItemStack(Material.WOODEN_SWORD), ChatColor.RED+"ad Slayer", ChatColor.DARK_AQUA+"TROLOLLOLOL", true, true), new ItemStack[]{
 				new ItemStack(Material.DIAMOND),
 				new ItemStack(Material.CHAINMAIL_BOOTS)}));
-		as.allCraftedItems.add(new CraftedItem(ItemAPI.LoreItem(new ItemStack(Material.LEGACY_ACACIA_DOOR_ITEM), ChatColor.RED+"ads Slayer", ChatColor.DARK_PURPLE+"A mighty LOLa3", true, true), new ItemStack[]{
+		as.allCraftedItems.add(new CraftedItem(ItemAPI.LoreItem(new ItemStack(Material.ACACIA_DOOR), ChatColor.RED+"ads Slayer", ChatColor.DARK_PURPLE+"A mighty LOLa3", true, true), new ItemStack[]{
 				new ItemStack(Material.DIAMOND),
 				new ItemStack(Material.CHAINMAIL_BOOTS)}));
-		as.allCraftedItems.add(new CraftedItem(ItemAPI.LoreItem(new ItemStack(Material.LEGACY_ACACIA_DOOR_ITEM), ChatColor.WHITE+"Door", ChatColor.RED+"The Door to Nothing", true, true),new ItemStack[]{
+		as.allCraftedItems.add(new CraftedItem(ItemAPI.LoreItem(new ItemStack(Material.ACACIA_DOOR), ChatColor.WHITE+"Door", ChatColor.RED+"The Door to Nothing", true, true),new ItemStack[]{
 				new ItemStack(Material.DIAMOND),
 				new ItemStack(Material.CHAINMAIL_BOOTS)}));
-		as.allCraftedItems.add(new CraftedItem(ItemAPI.LoreItem(new ItemStack(Material.LEGACY_CARROT_ITEM), ChatColor.WHITE+"Carrot of death", ChatColor.DARK_PURPLE+"A mighty LOLa5",true,true), new ItemStack[]{
+		as.allCraftedItems.add(new CraftedItem(ItemAPI.LoreItem(new ItemStack(Material.CARROT), ChatColor.WHITE+"Carrot of death", ChatColor.DARK_PURPLE+"A mighty LOLa5",true,true), new ItemStack[]{
 				new ItemStack(Material.DIAMOND),
 				ItemAPI.ColoredItem(new ItemStack(Material.LEATHER_CHESTPLATE),ChatColor.RED+"Saiyan Chestplate",Arrays.asList(170, 0, 150))}));
 		as.allCraftedItems.add(new CraftedItem(ItemAPI.AdLoreItem(new ItemStack(Material.IRON_SWORD),ChatColor.DARK_PURPLE+"Ash Bringer", a,true,true), new ItemStack[]{
 				new ItemStack(Material.GUNPOWDER),
 				ItemAPI.LoreItem(new ItemStack(Material.IRON_SWORD), "Normal Sword", null),
-				ItemAPI.LoreItem(new ItemStack(Material.LEGACY_HARD_CLAY,1,(short)9), ChatColor.AQUA+"Paladin Runes", null)}));
+				ItemAPI.LoreItem(new ItemStack(Material.CYAN_TERRACOTTA), ChatColor.AQUA+"Paladin Runes", null)}));
 		//as.allCraftedItems.add(new CraftedItem(ItemAPI.LoreItem(new ItemStack(Material.STICK), ChatColor.GREEN+"\u2695"+ChatColor.LIGHT_PURPLE+"Stick Of Healing"+ChatColor.GREEN+"\u2695"),new ItemStack[]{ItemAPI.LoreItem(new ItemStack(Material.TIPPED_ARROW), "Healing Arrow"),ItemAPI.LoreItem(new ItemStack(Material.STICK), "Stick"),ItemAPI.LoreItem(new ItemStack(Material.NETHER_STAR), "Power Star")}));
 		as.allCraftedItems.add(new CraftedItem(ItemCreator.createItemArmor(ChatColor.LIGHT_PURPLE+"Dwarven Breastplate", EquipType.CHESTPLATE, 28, 215, 0, 24, 0, 0, 0, 32, 2, 12, true),new ItemStack[]{
 				new ItemStack(Material.ANVIL)}));
